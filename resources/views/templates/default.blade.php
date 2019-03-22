@@ -1,4 +1,6 @@
-<!doctype html>
+{{--TODO Create complete default template--}}
+
+        <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -9,7 +11,8 @@
     <title>About</title>
 </head>
 <body>
-@include('divs.navbar')
+{{--TODO Import navbar from offers and update--}}
+@include('templates.navbar')
 @yield('content')
 </body>
 </html>

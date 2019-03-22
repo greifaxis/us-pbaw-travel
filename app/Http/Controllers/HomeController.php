@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function welcome()
+    public function home()
     {
         $title = 'Home page!';
-        return view('welcome')->with('title', $title);
+        return view('home')->with('title', $title);
     }
+
 
     public function about()
     {
@@ -21,5 +22,10 @@ class HomeController extends Controller
         return view('about')->with($stuff);
     }
 
+    public function offers()
+    {
+//        $title = 'Home page!';
+        return view('offers');
+    }
 
 }

@@ -16,5 +16,6 @@
     return view('welcome');
 });*/
 
-Route::get('/', 'HomeController@welcome');
+Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
+Route::get('/offers', 'HomeController@offers');
