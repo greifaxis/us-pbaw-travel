@@ -15,17 +15,23 @@ class HomeController extends Controller
 
     public function about()
     {
-        $stuff = array(
+        $data = array(
             'title' => 'About',
+            'customStyles' => 'offers',
+            'navItems' => ['Offers'],
             'fields' => ['Military transport', 'Medivac', 'Casual trips', 'LSD trips', 'Laravel travels', 'Heavy drinking', 'Die Waffen liegt an!']
         );
-        return view('about')->with($stuff);
+        return view('about')->with($data);
     }
 
     public function offers()
     {
-//        $title = 'Home page!';
-        return view('offers');
+        $data = array(
+            'title' => 'Offers',
+            'customStyles' => 'offers',
+            'navItems' => ['About']
+        );
+        return view('offers')->with($data);
     }
 
 }
