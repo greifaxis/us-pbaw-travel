@@ -19,3 +19,5 @@
 Route::get('/', 'HomeController@home');
 Route::get('/about', 'HomeController@about');
 Route::get('/offers', 'HomeController@offers');
+
+Route::resource('posts', 'PostsController');
