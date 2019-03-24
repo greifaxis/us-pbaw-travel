@@ -14,7 +14,8 @@
                 </li>
                 @forelse($navItems as $navItem)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{'/'.strtolower($navItem)}}">{{$navItem}}</a>
+                        <a class="nav-link"
+                           href="{{'/'.strtolower(preg_replace('/\s+/', '', $navItem))}}">{{$navItem}}</a>
                     </li>
                 @empty
                     <p>Error loading fields!</p>

@@ -16,8 +16,13 @@
     return view('welcome');
 });*/
 
-Route::get('/', 'HomeController@home');
-Route::get('/about', 'HomeController@about');
-Route::get('/offers', 'HomeController@offers');
+Route::get('/', 'PagesController@home');
+Route::get('/about', 'PagesController@about');
+Route::get('/tours', 'PagesController@tours');
+Route::get('/showusers', 'PagesController@tours');
 
-Route::resource('posts', 'PostsController');
+
+Route::resource('offers', 'OffersController');
+Route::resource('hotels', 'HotelsController');
+Route::resource('orders', 'OrdersController');
+Route::resource('users', 'UsersController');
