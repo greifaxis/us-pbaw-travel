@@ -20,7 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
         'username' => $faker->unique()->userName,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => $faker->password, // password
+        'password' => $faker->password, // password not hashed
         'firstName' => $faker->firstName,
         'lastName' => $faker->lastName,
         'telephone' => $faker->e164PhoneNumber,

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
+    public $navItems = ['About', 'Tours', 'Show Users'];
+
     public function home()
     {
         $title = 'Home page!';
@@ -17,34 +19,43 @@ class PagesController extends Controller
     public function about()
     {
 //        $users = DB::select("SELECT * FROM `users`");
-        $data = array(
-            'title' => 'About',
+        $title = array(
+            'title' => 'About'
+        );
+        $config = array(
             'customStyles' => 'tours',
-            'navItems' => ['Tours', 'Show Users'],
+            'navItems' => array_diff($this->navItems, array($title['title'])),
             'fields' => ['Military transport', 'Medivac', 'Casual trips', 'LSD trips', 'Laravel travels', 'Heavy drinking', 'Die Waffen liegt an!']
         );
-
+        $data = array_merge($title, $config);
         return view('about')->with($data);
     }
 
     public function tours()
     {
-        $data = array(
-            'title' => 'Tours',
-            'customStyles' => 'tours',
-            'navItems' => ['About', 'Show Users']
+        $title = array(
+            'title' => 'Tours'
         );
+        $config = array(
+            'customStyles' => 'tours',
+            'navItems' => array_diff($this->navItems, array($title['title'])),
+        );
+        $data = array_merge($title, $config);
         return view('tours')->with($data);
     }
 
     public function showusers()
     {
-        $data = array(
-            'title' => 'Show Users',
-            'customStyles' => 'tours',
-            'navItems' => ['About', 'Tours']
+        $title = array(
+            'title' => 'Show Users'
         );
-        return view('showusers')->with($data);
+        $config = array(
+            'customStyles' => 'tours',
+            'navItems' => array_diff($this->navItems, array($title['title'])),
+        );
+        $data = array_merge($title, $config);
+//        return view('showusers')->with($data);
+        return redirect()->action('UsersController@index');
     }
 
 }

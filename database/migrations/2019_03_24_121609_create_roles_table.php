@@ -19,17 +19,17 @@ class CreateRolesTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('roles')->insert(
-            array(
-                'role' => 'user'
-            )
-        );
+        /*        DB::table('roles')->insert(
+                    array(
+                        'role' => 'user'
+                    )
+                );
 
-        DB::table('roles')->insert(
-            array(
-                'role' => 'admin'
-            )
-        );
+                DB::table('roles')->insert(
+                    array(
+                        'role' => 'admin'
+                    )
+                );*/
     }
 
     /**

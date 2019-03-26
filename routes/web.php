@@ -19,7 +19,7 @@
 Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/tours', 'PagesController@tours');
-Route::get('/showusers', 'PagesController@tours');
+Route::get('/showusers', 'PagesController@showusers');
 
 
 Route::resource('offers', 'OffersController');
