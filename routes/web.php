@@ -16,13 +16,18 @@
     return view('welcome');
 });*/
 
+//TODO Implement login
+//TODO Implement user and admin
+
+
 Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/tours', 'PagesController@tours');
-Route::get('/showusers', 'PagesController@showusers');
+Route::get('/hotels', 'PagesController@hotels');
+Route::get('/test', 'PagesController@test');
 
-
-Route::resource('offers', 'OffersController');
-Route::resource('hotels', 'HotelsController');
-Route::resource('orders', 'OrdersController');
-Route::resource('users', 'UsersController');
+Route::resource('showusers', 'UsersController@index');
+//Route::resource('offers', 'OffersController');
+//Route::resource('hotels', 'HotelsController');
+//Route::resource('orders', 'OrdersController');
+//Route::resource('users', 'UsersController');

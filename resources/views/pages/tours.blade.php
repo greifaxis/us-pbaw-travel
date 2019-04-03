@@ -1,5 +1,10 @@
 @extends('templates.default')
 
+@section('title','Tours')
+@push('customStyles')
+    <link rel="stylesheet" href="{{asset('css/tours.css')}}">
+@endpush
+
 @section('content')
 <!-- Navigation -->
 

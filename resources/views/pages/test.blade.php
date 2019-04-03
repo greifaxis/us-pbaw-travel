@@ -1,9 +1,14 @@
 @extends('templates.default')
 
+@section('title','Test')
+@push('customStyles')
+    <link rel="stylesheet" href="{{asset('css/tours.css')}}">
+@endpush
+
 @section('content')
     <div class="container">
         <br>
-        <h1>{{$title}}: {{count($fields)}}</h1>
+        <h1>About: {{count($fields)}}</h1>
         {{--<h2>Trim: {{preg_replace('/\s+/', '', $navItems[1])}}</h2>--}}
         <ul class="list-group">
             @forelse($fields as $field)

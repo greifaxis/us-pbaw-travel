@@ -6,7 +6,7 @@
 
 {{--Styles--}}
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
-<link rel="stylesheet" href="{{asset('css/'.$customStyles.'.css')}}">
-
+{{--Custom Style--}}
+@stack('customStyles')
 {{--Title--}}
-<title>{{$title}}</title>
+<title>@yield('title')</title>

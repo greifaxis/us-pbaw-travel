@@ -1,5 +1,9 @@
 @extends('templates.default')
 
+@section('title','Show Users')
+@push('customStyles')
+    <link rel="stylesheet" href="{{asset('css/tours.css')}}">
+@endpush
 @section('content')
     <ul class="list-group">
         @forelse($users as $user)

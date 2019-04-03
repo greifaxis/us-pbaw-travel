@@ -17,7 +17,7 @@ class UsersController extends Controller
     {
         //
         $users = User::all();
-        $data = PagesController;
+//        $data = PagesController::class ;
         return view('showusers')->with('users', $users);
     }
 
