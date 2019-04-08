@@ -7,7 +7,6 @@
 
 @section('content')
     <!-- Page Content -->
-    <div class="container">
 
         <!-- Heading Row -->
         <div class="row align-items-center my-5">
@@ -80,6 +79,5 @@
         </div>
         <!-- /.row -->
 
-    </div>
     <!-- /.container -->
 @endsection

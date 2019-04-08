@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Http\Controllers\PagesController;
+use App\Contact;
 
-class UsersController extends Controller
+class ContactsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,10 @@ class UsersController extends Controller
     public function index()
     {
         //
-
-
+//        $hotels = Hotel::orderBy('name','asc')->paginate(5);
+        return view('pages.contact');
+//            'hotels'=>$hotels,
+//            'hotelsFirst'=>$hotelsFirst
     }
 
     /**
@@ -28,6 +29,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+        return view('pages.contact');
     }
 
     /**
@@ -39,6 +41,21 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|digits:2',
+            'phone' => 'nullable|digits:9',
+            'body' => 'required|max:255'
+        ]);
+        $contact = new Contact;
+        $contact->title = $request->input('title');
+        $contact->email = $request->input('email');
+        $contact->phone = '+' . $request->input('areacode') . $request->input('phone');
+        $contact->body = $request->input('body');
+        $contact->save();
+
+        return redirect('contact')->with('success', 'Message Send');
     }
 
     /**

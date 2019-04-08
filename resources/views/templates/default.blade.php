@@ -6,8 +6,11 @@
 </head>
 
 <body>
-@include('templates.navbar')
-@yield('content')
+@include('templates.navbarUser')
+<div class="container">
+    @include('templates.messages')
+    @yield('content')
+</div>
 @include('templates.footer')
 @include('templates.scripts')
 </body>

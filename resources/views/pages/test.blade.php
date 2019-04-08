@@ -6,17 +6,16 @@
 @endpush
 
 @section('content')
-    <div class="container">
         <br>
-        <h1>About: {{count($fields)}}</h1>
+        <h1>About: {{\App\Hotel::count()}}</h1>
         {{--<h2>Trim: {{preg_replace('/\s+/', '', $navItems[1])}}</h2>--}}
-        <ul class="list-group">
-            @forelse($fields as $field)
-                <li class="list-group-item">{{$field}}</li>
+        {{--<ul class="list-group">--}}
+        @forelse($hotels as $hotel)
+            {{--<li class="list-group-item">{{$hotel}}</li>--}}
+            <div class="well"><h2>{{$hotel->name}}</h2></div>
             @empty
-                <p>Error loading fields!</p>
+            <p>Error loading hotels!</p>
             @endforelse
-        </ul>
+        {{--</ul>--}}
         <br>
-    </div>
 @endsection
