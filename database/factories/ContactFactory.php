@@ -6,7 +6,7 @@ $factory->define(App\Contact::class, function (Faker $faker) {
     return [
         'title' => $faker->catchPhrase,
         'email' => $faker->safeEmail,
-        'phone' => $faker->e164PhoneNumber,
+        'phone' => $faker->optional()->numerify('+###########'),
         'body' => $faker->text($maxNbChars = 200, $variableNbWords = true),
     ];
 });

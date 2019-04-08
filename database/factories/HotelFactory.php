@@ -6,7 +6,7 @@ $factory->define(App\Hotel::class, function (Faker $faker) {
     return [
         //
         'name' => $faker->company,
-        'body' => $faker->text($maxNbChars = 200, $variableNbWords = true),
+        'body' => $faker->text($maxNbChars = 500, $variableNbWords = true),
         'city' => $faker->city,
         'country' => $faker->country,
         'stars' => $faker->biasedNumberBetween($min = 1, $max = 6, $function = 'sqrt'),

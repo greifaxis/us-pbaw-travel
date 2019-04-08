@@ -2,7 +2,7 @@
     <div class="container">
         {{--TODO SVG logo of UŚ Travel--}}
         {{--<a class="navbar-brand" href="#">@yield('title')</a>--}}
-        <a class="navbar-brand" href="#">UŚ Tavel</a>
+        <a class="navbar-brand" href="/">UŚ Tavel</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
                                         href="myorders">My Orders</a></li>
                 <li class="nav-item"><a class="nav-link text-danger {{ Request::is('myaccount') ? 'active' : '' }}"
                                         href="myaccount">My Account</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="contact">Contact
+                <li class="nav-item"><a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="about">Contact
                         Us</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::is('test') ? 'active' : '' }}" href="test">TEST</a>
                 </li>

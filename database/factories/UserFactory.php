@@ -23,7 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => $faker->password, // password not hashed
         'firstName' => $faker->firstName,
         'lastName' => $faker->lastName,
-        'telephone' => $faker->e164PhoneNumber,
+        'phone' => $faker->numerify('+###########'),
         'address' => $faker->address,
         'remember_token' => Str::random(10),
     ];

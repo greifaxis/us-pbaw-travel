@@ -42,8 +42,8 @@
                                         &#9733;
                                     @endfor
                             </span></h3>
-                            <p class="card-text">{{$hotel->body}}</p>
-                            <h4>Pearl of {{$hotel->city}}, {{$hotel->country}}</h4>
+                            <p class="card-text text-justify">{{$hotel->body}}</p>
+                            <h4>Location: {{$hotel->city}}, {{$hotel->country}}</h4>
                         </div>
                     </div>
                 @empty

@@ -16,7 +16,7 @@ class ContactsController extends Controller
     {
         //
 //        $hotels = Hotel::orderBy('name','asc')->paginate(5);
-        return view('pages.contact');
+        return view('pages.about');
 //            'hotels'=>$hotels,
 //            'hotelsFirst'=>$hotelsFirst
     }
@@ -29,7 +29,7 @@ class ContactsController extends Controller
     public function create()
     {
         //
-        return view('pages.contact');
+        return view('pages.about');
     }
 
     /**
@@ -55,7 +55,7 @@ class ContactsController extends Controller
         $contact->body = $request->input('body');
         $contact->save();
 
-        return redirect('contact')->with('success', 'Message Send');
+        return redirect('about')->with('success', 'Message Send');
     }
 
     /**

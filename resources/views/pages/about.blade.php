@@ -6,8 +6,9 @@
 @endpush
 
 @section('content')
-    <h1>Contact Us:</h1>
 
+
+    <h1>Contact Us:</h1>
     <div class="mx-auto my-3">
         {{--{!! Form::open(['url'=>'foo/bar']) !!}--}}
         {{Form::open(['action'=> 'ContactsController@store','method' => 'POST'])}}
@@ -37,6 +38,4 @@
         {{Form::submit('Submit',['class'=>'btn btn-secondary'])}}
         {{Form::close()}}
     </div>
-
-
 @endsection

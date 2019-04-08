@@ -21,13 +21,12 @@
 
 
 Route::get('/', 'PagesController@home');
-Route::get('/about', 'PagesController@about');
 Route::get('/tours', 'PagesController@tours');
 Route::get('/hotels', 'PagesController@hotels');
 //Route::get('/test', 'PagesController@test');
 
 Route::resource('/hotels', 'HotelsController');
-Route::resource('/contact', 'ContactsController');
+Route::resource('/about', 'ContactsController');
 //Route::resource('offers', 'OffersController');
 //Route::resource('hotels', 'HotelsController');
 //Route::resource('orders', 'OrdersController');
