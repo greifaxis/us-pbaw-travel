@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Role;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -16,15 +17,19 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $company = $faker->boolean($chanceOfGettingTrue = 75) ? $faker->company : null;
     return [
-        'username' => $faker->unique()->userName,
+        'name' => $faker->unique()->userName,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => $faker->password, // password not hashed
+        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'firstName' => $faker->firstName,
         'lastName' => $faker->lastName,
+        'company' => $company,
+        'nipnum' => ($company <> null) ? $faker->isbn10 : null,
         'phone' => $faker->numerify('+###########'),
         'address' => $faker->address,
         'remember_token' => Str::random(10),
+//        'role_id' => Role::all()->random()->id,
     ];
 });

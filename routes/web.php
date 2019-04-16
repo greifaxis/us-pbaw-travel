@@ -16,18 +16,20 @@
     return view('welcome');
 });*/
 
-//TODO Implement login
 //TODO Implement user and admin
 
+Auth::routes();
 
-Route::get('/', 'PagesController@home');
-Route::get('/tours', 'PagesController@tours');
-Route::get('/hotels', 'PagesController@hotels');
+//Route::get('/', 'PagesController@home');
+Route::get('/tours', 'HomeController@tours');
+Route::get('/hotels', 'HomeController@hotels');
 //Route::get('/test', 'PagesController@test');
+Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
+
+
+Route::get('/', 'HomeController@index');
 
 Route::resource('/hotels', 'HotelsController');
 Route::resource('/about', 'ContactsController');
-//Route::resource('offers', 'OffersController');
-//Route::resource('hotels', 'HotelsController');
-//Route::resource('orders', 'OrdersController');
-//Route::resource('users', 'UsersController');
+Route::resource('/myorders', 'OrdersController');
+Route::resource('/myprofile', 'ProfilesController');

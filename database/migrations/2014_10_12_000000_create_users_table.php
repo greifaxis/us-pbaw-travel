@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,17 +16,24 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username')->unique();
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('phone');
-            $table->string('address');
+            $table->string('firstName')->nullable();
+            $table->string('lastName')->nullable();
+            $table->string('company')->nullable();
+            $table->string('nipnum')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->unsignedBigInteger('role_id')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
+
+//        Schema::table('users', function($table) {
+//            $table->foreign('role_id')->references('id')->on('roles');
+//        });
     }
 
     /**

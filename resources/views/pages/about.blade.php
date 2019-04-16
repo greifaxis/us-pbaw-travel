@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('layouts.app')
 
 @section('title','Contact Us')
 @push('customStyles')
@@ -6,9 +6,9 @@
 @endpush
 
 @section('content')
-
-
     <h1>Contact Us:</h1>
+    <h2>{{App\Role::where('role','=','user')->first()->id}}</h2>
+    <h2>{{App\Role::where('role','=','admin')->first()->id}}</h2>
     <div class="mx-auto my-3">
         {{--{!! Form::open(['url'=>'foo/bar']) !!}--}}
         {{Form::open(['action'=> 'ContactsController@store','method' => 'POST'])}}

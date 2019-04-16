@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('layouts.app')
 
 @section('title','Hotels')
 @push('customStyles')

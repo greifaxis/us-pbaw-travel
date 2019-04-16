@@ -30,7 +30,6 @@ class PagesController extends Controller
         return view('pages.hotels');
     }
 
-//    TODO Test getting data from DB on test site
     public function test()
     {
         return view('pages.test');
