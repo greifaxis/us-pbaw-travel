@@ -8,10 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
+    //    Table Name
+    protected $table = 'offers';
+//    Primary Key
+    public $primaryKey = 'id';
+//    Timestamps
+    public $timestamps = true;
+
+    protected $dates = ['date_begin', 'date_end'];
+
+    protected $casts = [
+        'images' => 'array',
+    ];
+
     public function orders()
     {
 //        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
 //        return $this->belongsToMany(User::class)->withTimestamps();
         return $this->belongsToMany(Order::class, 'offer_order')->withTimestamps();
+    }
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
     }
 }

@@ -3,14 +3,16 @@
 <head>
     @include('partials.head')
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <div id="app">
     @include('partials.navbar')
+    <main role="main" class="flex-shrink-0">
     <div class="container">
         {{--TODO Think aboout implementing this messages--}}
         {{--@include('partials.messages')--}}
         @yield('content')
     </div>
+    </main>
     @include('partials.footer')
     @include('partials.scripts')
 </div>

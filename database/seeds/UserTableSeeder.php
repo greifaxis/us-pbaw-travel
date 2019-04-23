@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
         $test_user->password = Hash::make('useruser');
         $test_user->firstName = 'John';
         $test_user->lastName = 'Doe';
-        $test_user->phone = $faker->numerify('+###########');
+        $test_user->phone = $faker->unique()->numerify('+48#########');
         $test_user->address = $faker->address;
         $test_user->role_id = 1;
         $test_user->remember_token = Str::random(10);
@@ -41,14 +41,14 @@ class UserTableSeeder extends Seeder
         $test_admin->password = Hash::make('adminadmin');
         $test_admin->firstName = 'Genghis';
         $test_admin->lastName = 'Khan';
-        $test_admin->phone = $faker->numerify('+###########');
+        $test_admin->phone = $faker->unique()->numerify('+48#########');
         $test_admin->address = $faker->address;
         $test_admin->role_id = 2;
         $test_admin->remember_token = Str::random(10);
         $test_admin->save();
 //        $test_admin->roles()->attach($role_admin);
 
-        factory(App\User::class, 40)->create(['role_id' => 1]);
-        factory(App\User::class, 8)->create(['role_id' => 2]);
+        factory(App\User::class, 90)->create(['role_id' => 1]);
+        factory(App\User::class, 8)->create(['company' => null, 'nipnum' => null, 'role_id' => 2]);
     }
 }

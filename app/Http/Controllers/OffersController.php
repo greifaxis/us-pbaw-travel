@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Offer;
+use App\Hotel;
 use Illuminate\Http\Request;
 
 class OffersController extends Controller
@@ -13,8 +15,12 @@ class OffersController extends Controller
      */
     public function index()
     {
-        //
+        $offers = Offer::where('places_free', '>', 0)->get();
+        $best_offers = Offer::where('places_free', '>', 0)->orderBy('places_free', 'asc')->take(3)->get();
+//        $best_offers_images = Offer::where('places_free','>',0)->orderBy('places_free','asc')->take(3)->pluck('images')->toArray();
+        $hotels = Hotel::all();
 
+        return view('guest.tours', compact('offers', 'hotels', 'best_offers'));
     }
 
     /**
@@ -46,7 +52,7 @@ class OffersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('auth.showtours', ['offer' => Offer::findOrFail($id)]);
     }
 
     /**

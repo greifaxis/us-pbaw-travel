@@ -1,0 +1,1304 @@
+Index: app/Http/Controllers/AdminsController.php
+===================================================================
+--- app/Http/Controllers/AdminsController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/AdminsController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,84 +0,0 @@
+-<?php
+-
+-namespace App\Http\Controllers;
+-
+-use Illuminate\Http\Request;
+-
+-class AdminsController extends Controller
+-{
+-    /**
+-     * Display a listing of the resource.
+-     *
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function index()
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Show the form for creating a new resource.
+-     *
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function create()
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Store a newly created resource in storage.
+-     *
+-     * @param  \Illuminate\Http\Request $request
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function store(Request $request)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Display the specified resource.
+-     *
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function show($id)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Show the form for editing the specified resource.
+-     *
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function edit($id)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Update the specified resource in storage.
+-     *
+-     * @param  \Illuminate\Http\Request $request
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function update(Request $request, $id)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Remove the specified resource from storage.
+-     *
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function destroy($id)
+-    {
+-        //
+-    }
+-}
+Index: app/Http/Controllers/UserRolesController.php
+===================================================================
+--- app/Http/Controllers/UserRolesController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/UserRolesController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,84 +0,0 @@
+-<?php
+-
+-namespace App\Http\Controllers;
+-
+-use Illuminate\Http\Request;
+-
+-class UserRolesController extends Controller
+-{
+-    /**
+-     * Display a listing of the resource.
+-     *
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function index()
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Show the form for creating a new resource.
+-     *
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function create()
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Store a newly created resource in storage.
+-     *
+-     * @param  \Illuminate\Http\Request $request
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function store(Request $request)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Display the specified resource.
+-     *
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function show($id)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Show the form for editing the specified resource.
+-     *
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function edit($id)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Update the specified resource in storage.
+-     *
+-     * @param  \Illuminate\Http\Request $request
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function update(Request $request, $id)
+-    {
+-        //
+-    }
+-
+-    /**
+-     * Remove the specified resource from storage.
+-     *
+-     * @param  int $id
+-     * @return \Illuminate\Http\Response
+-     */
+-    public function destroy($id)
+-    {
+-        //
+-    }
+-}
+Index: app/OrderItem.php
+===================================================================
+--- app/OrderItem.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/OrderItem.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,10 +0,0 @@
+-<?php
+-
+-namespace App;
+-
+-use Illuminate\Database\Eloquent\Model;
+-
+-class OrderItem extends Model
+-{
+-    //
+-}
+Index: app/UserRole.php
+===================================================================
+--- app/UserRole.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/UserRole.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,10 +0,0 @@
+-<?php
+-
+-namespace App;
+-
+-use Illuminate\Database\Eloquent\Model;
+-
+-class UserRole extends Model
+-{
+-    //
+-}
+Index: database/migrations/2019_03_24_121624_create_order_items_table.php
+===================================================================
+--- database/migrations/2019_03_24_121624_create_order_items_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/migrations/2019_03_24_121624_create_order_items_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,31 +0,0 @@
+-<?php
+-
+-use Illuminate\Support\Facades\Schema;
+-use Illuminate\Database\Schema\Blueprint;
+-use Illuminate\Database\Migrations\Migration;
+-
+-class CreateOrderItemsTable extends Migration
+-{
+-    /**
+-     * Run the migrations.
+-     *
+-     * @return void
+-     */
+-    public function up()
+-    {
+-        Schema::create('order_items', function (Blueprint $table) {
+-            $table->bigIncrements('id');
+-            $table->timestamps();
+-        });
+-    }
+-
+-    /**
+-     * Reverse the migrations.
+-     *
+-     * @return void
+-     */
+-    public function down()
+-    {
+-        Schema::dropIfExists('order_items');
+-    }
+-}
+Index: database/migrations/2019_03_24_121637_create_user_roles_table.php
+===================================================================
+--- database/migrations/2019_03_24_121637_create_user_roles_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/migrations/2019_03_24_121637_create_user_roles_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,31 +0,0 @@
+-<?php
+-
+-use Illuminate\Support\Facades\Schema;
+-use Illuminate\Database\Schema\Blueprint;
+-use Illuminate\Database\Migrations\Migration;
+-
+-class CreateUserRolesTable extends Migration
+-{
+-    /**
+-     * Run the migrations.
+-     *
+-     * @return void
+-     */
+-    public function up()
+-    {
+-        Schema::create('user_roles', function (Blueprint $table) {
+-            $table->bigIncrements('id');
+-            $table->timestamps();
+-        });
+-    }
+-
+-    /**
+-     * Reverse the migrations.
+-     *
+-     * @return void
+-     */
+-    public function down()
+-    {
+-        Schema::dropIfExists('user_roles');
+-    }
+-}
+Index: resources/views/templates/default.blade.php
+===================================================================
+--- resources/views/templates/default.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/templates/default.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
+@@ -1,18 +0,0 @@
+-<!doctype html>
+-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+-
+-<head>
+-    @include('templates.head')
+-</head>
+-
+-<body>
+-@include('templates.navbarUser')
+-<div class="container">
+-    @include('templates.messages')
+-    @yield('content')
+-</div>
+-@include('templates.footer')
+-@include('templates.scripts')
+-</body>
+-
+-</html>
+\ No newline at end of file
+Index: app/Http/Middleware/RedirectIfAuthenticated.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Middleware/RedirectIfAuthenticated.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Middleware/RedirectIfAuthenticated.php	(date 1555024061614)
+@@ -18,7 +18,7 @@
+     public function handle($request, Closure $next, $guard = null)
+     {
+         if (Auth::guard($guard)->check()) {
+-            return redirect('/home');
++            return redirect('/');
+         }
+ 
+         return $next($request);
+Index: app/Role.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Role.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Role.php	(date 1555425960571)
+@@ -1,10 +1,33 @@
+ <?php
+ 
+ namespace App;
+-
+ use Illuminate\Database\Eloquent\Model;
+ 
+ class Role extends Model
+ {
+-    //
+-}
++
++    /*    protected $table = 'roles';
++    //    Primary Key
++        public $primaryKey = 'id';
++    //    Timestamps
++        public $timestamps = true;*/
++
++    protected $fillable = [
++        'created_at', 'updated_at'
++    ];
++
++    protected $guarded = [
++        'id', 'role'
++    ];
++
++    /*    public function users()
++        {
++            return $this->belongsToMany('App\User', 'role_users')->withTimestamps();
++        }*/
++
++    public function users()
++    {
++        return $this->hasMany(User::class);
++    }
++
++}
+\ No newline at end of file
+Index: database/migrations/2014_10_12_000000_create_users_table.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/migrations/2014_10_12_000000_create_users_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/migrations/2014_10_12_000000_create_users_table.php	(date 1555088456654)
+@@ -1,5 +1,6 @@
+ <?php
+ 
++use App\Role;
+ use Illuminate\Support\Facades\Schema;
+ use Illuminate\Database\Schema\Blueprint;
+ use Illuminate\Database\Migrations\Migration;
+@@ -15,17 +16,24 @@
+     {
+         Schema::create('users', function (Blueprint $table) {
+             $table->bigIncrements('id');
+-            $table->string('username')->unique();
++            $table->string('name')->unique();
+             $table->string('email')->unique();
+             $table->timestamp('email_verified_at')->nullable();
+             $table->string('password');
+-            $table->string('firstName');
+-            $table->string('lastName');
+-            $table->string('phone');
+-            $table->string('address');
++            $table->string('firstName')->nullable();
++            $table->string('lastName')->nullable();
++            $table->string('company')->nullable();
++            $table->string('nipnum')->nullable();
++            $table->string('phone')->nullable();
++            $table->string('address')->nullable();
++            $table->unsignedBigInteger('role_id')->default(1);
+             $table->rememberToken();
+             $table->timestamps();
+         });
++
++//        Schema::table('users', function($table) {
++//            $table->foreign('role_id')->references('id')->on('roles');
++//        });
+     }
+ 
+     /**
+Index: resources/views/templates/head.blade.php
+===================================================================
+--- resources/views/templates/head.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/partials/head.blade.php	(date 1555425960590)
+@@ -4,9 +4,15 @@
+ <meta name="description" content="">
+ <meta name="author" content="">
+ 
+-{{--Styles--}}
++{{--CSRF Token--}}
++<meta name="csrf-token" content="{{ csrf_token() }}">
++{{--Title--}}
++<title>@yield('title')</title>
++{{--Scripts--}}
++<script src="{{ asset('js/app.js') }}" defer></script>
++{{----Styles----}}
+ <link rel="stylesheet" href="{{asset('css/app.css')}}">
++<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
++      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+ {{--Custom Style--}}
+ @stack('customStyles')
+-{{--Title--}}
+-<title>@yield('title')</title>
+\ No newline at end of file
+Index: routes/web.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/web.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ routes/web.php	(date 1555405709785)
+@@ -16,18 +16,20 @@
+     return view('welcome');
+ });*/
+ 
+-//TODO Implement login
+ //TODO Implement user and admin
+ 
++Auth::routes();
+ 
+-Route::get('/', 'PagesController@home');
+-Route::get('/tours', 'PagesController@tours');
+-Route::get('/hotels', 'PagesController@hotels');
++//Route::get('/', 'PagesController@home');
++Route::get('/tours', 'HomeController@tours');
++Route::get('/hotels', 'HomeController@hotels');
+ //Route::get('/test', 'PagesController@test');
++Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
++
++
++Route::get('/', 'HomeController@index');
+ 
+ Route::resource('/hotels', 'HotelsController');
+ Route::resource('/about', 'ContactsController');
+-//Route::resource('offers', 'OffersController');
+-//Route::resource('hotels', 'HotelsController');
+-//Route::resource('orders', 'OrdersController');
+-//Route::resource('users', 'UsersController');
+\ No newline at end of file
++Route::resource('/myorders', 'OrdersController');
++Route::resource('/myprofile', 'ProfilesController');
+Index: app/Http/Kernel.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Kernel.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Kernel.php	(date 1555404892156)
+@@ -60,6 +60,7 @@
+         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
++        'admin' => \App\Http\Middleware\Admin::class,
+     ];
+ 
+     /**
+Index: database/migrations/2019_03_24_120547_create_offers_table.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/migrations/2019_03_24_120547_create_offers_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/migrations/2019_03_24_120547_create_offers_table.php	(date 1554834331587)
+@@ -15,7 +15,7 @@
+     {
+         Schema::create('offers', function (Blueprint $table) {
+             $table->bigIncrements('id');
+-            $table->string('title');
++            $table->string('name');
+             $table->timestamps();
+         });
+     }
+Index: resources/views/templates/footer.blade.php
+===================================================================
+--- resources/views/templates/footer.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/partials/footer.blade.php	(date 1555425960521)
+@@ -1,6 +1,10 @@
+-<footer class="py-5 bg-dark">
++{{--<footer class="py-5 bg-dark">
+     <div class="container">
+         <p class="m-0 text-center text-white">Copyright &copy; Sławosz Gala & Rafał Wołczyk 2019</p>
+     </div>
+-    <!-- /.container -->
+-</footer>
+\ No newline at end of file
++</footer>--}}
++<footer class="py-4 bg-dark text-white-50 container-fluid" style="position: absolute; bottom: 0;">
++    <div class="container text-center">
++        <p class="m-0 text-center text-white">Copyright &copy; Sławosz Gala & Rafał Wołczyk 2019</p>
++    </div>
++</footer>
+Index: app/Offer.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Offer.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Offer.php	(date 1555425960515)
+@@ -4,7 +4,14 @@
+ 
+ use Illuminate\Database\Eloquent\Model;
+ 
++//use App\Order;
++
+ class Offer extends Model
+ {
+-    //
++    public function orders()
++    {
++//        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
++//        return $this->belongsToMany(User::class)->withTimestamps();
++        return $this->belongsToMany(Order::class, 'offer_order')->withTimestamps();
++    }
+ }
+Index: app/User.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/User.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/User.php	(date 1555425960541)
+@@ -10,13 +10,14 @@
+ {
+     use Notifiable;
+ 
++
+     /**
+      * The attributes that are mass assignable.
+      *
+      * @var array
+      */
+     protected $fillable = [
+-        'username', 'email', 'password', 'firstName', 'lastName', 'telephone', 'address'
++        'name', 'email', 'password', 'firstName', 'lastName', 'telephone', 'address', 'role_id'
+     ];
+ 
+     /**
+@@ -36,4 +37,17 @@
+     protected $casts = [
+         'email_verified_at' => 'datetime',
+     ];
++
++    /*public function roles()
++    {
++          return $this->belongsToMany('App\Role', 'role_users')->withTimestamps();
++
++    }*/
++
++    public function roles()
++    {
++        return $this->belongsTo(Role::class);
++    }
++
++
+ }
+\ No newline at end of file
+Index: database/seeds/RoleTableSeeder.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/seeds/RoleTableSeeder.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/seeds/RoleTableSeeder.php	(date 1555425960585)
+@@ -2,6 +2,7 @@
+ 
+ use Illuminate\Database\Seeder;
+ use Carbon\Carbon;
++use App\Role;
+ 
+ class RoleTableSeeder extends Seeder
+ {
+@@ -12,21 +13,29 @@
+      */
+     public function run()
+     {
++
+ //        Fluent seeding
+-        \App\Role::insert([
+-            'role' => 'admin',
+-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+-        ]);
++        /*       \App\Role::insert([
++                   'role' => 'admin',
++                   'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
++                   'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
++               ]);
+ 
+-        \App\Role::insert([
+-            'role' => 'user',
+-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+-        ]);
++               \App\Role::insert([
++                   'role' => 'user',
++                   'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
++                   'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
++               ]);*/
++
+ //          Eloquent seeding
+-//        foreach ($roles as $role){
+-//            Role::create($role);
+-//        }
++        $role_user = new Role();
++        $role_user->role = 'user';
++        $role_user->description = 'Użytkownik';
++        $role_user->save();
++
++        $role_admin = new Role();
++        $role_admin->role = 'admin';
++        $role_admin->description = 'Administrator';
++        $role_admin->save();
+     }
+ }
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- package-lock.json	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ package-lock.json	(date 1555027062455)
+@@ -3689,14 +3689,12 @@
+         "balanced-match": {
+           "version": "1.0.0",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "brace-expansion": {
+           "version": "1.1.11",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "balanced-match": "^1.0.0",
+             "concat-map": "0.0.1"
+@@ -3716,8 +3714,7 @@
+         "concat-map": {
+           "version": "0.0.1",
+           "bundled": true,
+-          "dev": true,
+-          "optional": true
++          "dev": true
+         },
+         "console-control-strings": {
+           "version": "1.1.0",
+@@ -3865,7 +3862,6 @@
+           "version": "3.0.4",
+           "bundled": true,
+           "dev": true,
+-          "optional": true,
+           "requires": {
+             "brace-expansion": "^1.1.7"
+           }
+Index: database/factories/UserFactory.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/factories/UserFactory.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/factories/UserFactory.php	(date 1555089090295)
+@@ -1,6 +1,7 @@
+ <?php
+ 
+ use App\User;
++use App\Role;
+ use Illuminate\Support\Str;
+ use Faker\Generator as Faker;
+ 
+@@ -16,15 +17,19 @@
+ */
+ 
+ $factory->define(User::class, function (Faker $faker) {
++    $company = $faker->boolean($chanceOfGettingTrue = 75) ? $faker->company : null;
+     return [
+-        'username' => $faker->unique()->userName,
++        'name' => $faker->unique()->userName,
+         'email' => $faker->unique()->safeEmail,
+         'email_verified_at' => now(),
+-        'password' => $faker->password, // password not hashed
++        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+         'firstName' => $faker->firstName,
+         'lastName' => $faker->lastName,
++        'company' => $company,
++        'nipnum' => ($company <> null) ? $faker->isbn10 : null,
+         'phone' => $faker->numerify('+###########'),
+         'address' => $faker->address,
+         'remember_token' => Str::random(10),
++//        'role_id' => Role::all()->random()->id,
+     ];
+ });
+Index: database/seeds/DatabaseSeeder.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/seeds/DatabaseSeeder.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/seeds/DatabaseSeeder.php	(date 1555016128109)
+@@ -1,6 +1,8 @@
+ <?php
+ 
+ use Illuminate\Database\Seeder;
++use App\User;
++use App\RoleUser;
+ 
+ class DatabaseSeeder extends Seeder
+ {
+@@ -11,13 +13,12 @@
+      */
+     public function run()
+     {
+-        // $this->call(UsersTableSeeder::class);
+         Eloquent::unguard();
+ 
+-        $this->call(UserTableSeeder::class);
+         $this->call(RoleTableSeeder::class);
+         $this->call(HotelTableSeeder::class);
+         $this->call(ContactTableSeeder::class);
++        $this->call(UserTableSeeder::class);
+ 
+         Eloquent::reguard();
+     }
+Index: resources/views/pages/tours.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/views/pages/tours.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/pages/tours.blade.php	(date 1555086631773)
+@@ -1,4 +1,4 @@
+-@extends('templates.default')
++@extends('layouts.app')
+ 
+ @section('title','Tours')
+ @push('customStyles')
+Index: config/database.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- config/database.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ config/database.php	(date 1555016630462)
+@@ -53,7 +53,7 @@
+             'prefix' => '',
+             'prefix_indexes' => true,
+             'strict' => true,
+-            'engine' => null,
++            'engine' => 'InnoDB',
+             'options' => extension_loaded('pdo_mysql') ? array_filter([
+                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+             ]) : [],
+Index: resources/views/templates/navbarUser.blade.php
+===================================================================
+--- resources/views/templates/navbarUser.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/partials/navbar.blade.php	(date 1555425960551)
+@@ -1,7 +1,7 @@
+-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
++{{--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+     <div class="container">
+-        {{--TODO SVG logo of UŚ Travel--}}
+-        {{--<a class="navbar-brand" href="#">@yield('title')</a>--}}
++        --}}{{--TODO SVG logo of UŚ Travel--}}{{--
++        --}}{{--<a class="navbar-brand" href="#">@yield('title')</a>--}}{{--
+         <a class="navbar-brand" href="/">UŚ Tavel</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+@@ -10,29 +10,81 @@
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+                 <li class="nav-item"><a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a></li>
++                <li class="nav-item"><a class="nav-link {{ Request::is('tours') ? 'active' : '' }}" href="tours">Tours</a></li>
++                <li class="nav-item"><a class="nav-link {{ Request::is('hotels') ? 'active' : '' }}" href="hotels">Hotels</a></li>
++                <li class="nav-item"><a class="nav-link text-danger {{ Request::is('myorders') ? 'active' : '' }}" href="myorders">My Orders</a></li>
++                <li class="nav-item"><a class="nav-link text-danger {{ Request::is('myaccount') ? 'active' : '' }}" href="myaccount">My Account</a></li>
++                <li class="nav-item"><a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="about">Contact Us</a></li>
++                <li class="nav-item"><a class="nav-link {{ Request::is('test') ? 'active' : '' }}" href="test">TEST</a></li>
++            </ul>
++        </div>
++    </div>
++</nav>--}}
++
++<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
++    <div class="container">
++        <a class="navbar-brand" href="{{ url('/') }}">
++            {{ config('app.name', 'Laravel') }}
++        </a>
++        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
++                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
++            <span class="navbar-toggler-icon"></span>
++        </button>
++
++        <div class="collapse navbar-collapse" id="navbarSupportedContent">
++            <!-- Left Side Of Navbar -->
++            <ul class="navbar-nav mr-auto">
++                <li class="nav-item"><a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a></li>
+                 <li class="nav-item"><a class="nav-link {{ Request::is('tours') ? 'active' : '' }}"
+                                         href="tours">Tours</a></li>
+                 <li class="nav-item"><a class="nav-link {{ Request::is('hotels') ? 'active' : '' }}" href="hotels">Hotels</a>
+                 </li>
+-                <li class="nav-item"><a class="nav-link text-danger {{ Request::is('myorders') ? 'active' : '' }}"
+-                                        href="myorders">My Orders</a></li>
+-                <li class="nav-item"><a class="nav-link text-danger {{ Request::is('myaccount') ? 'active' : '' }}"
+-                                        href="myaccount">My Account</a></li>
+                 <li class="nav-item"><a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="about">Contact
+                         Us</a></li>
+                 <li class="nav-item"><a class="nav-link {{ Request::is('test') ? 'active' : '' }}" href="test">TEST</a>
+                 </li>
+             </ul>
++
++            <!-- Right Side Of Navbar -->
++            <ul class="navbar-nav ml-auto">
++                <!-- Authentication Links -->
++                @guest
++                    <li class="nav-item">
++                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
++                    </li>
++                    @if (Route::has('register'))
++                        <li class="nav-item">
++                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
++                        </li>
++                    @endif
++                @else
++                    <li class="nav-item"><a class="nav-link">{{ Auth::user()->role_id }}</a></li>
++                    <li class="nav-item dropdown">
++                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
++                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
++                            {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}<span class="caret"></span>
++                        </a>
++
++                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
++
++                            <a class="dropdown-item text-danger {{ Request::is('myprofile') ? 'active' : '' }}"
++                               href="myprofile">My Profile</a>
++                            <a class="dropdown-item text-danger {{ Request::is('myorders') ? 'active' : '' }}"
++                               href="myorders">My Orders</a>
++                            <div class="dropdown-divider"></div>
++                            <a class="dropdown-item" href="{{ route('logout') }}"
++                               onclick="event.preventDefault();
++                                                     document.getElementById('logout-form').submit();">
++                                {{ __('Logout') }}
++                            </a>
++
++                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
++                                {{csrf_field()}}
++                            </form>
++                        </div>
++                    </li>
++                @endguest
++            </ul>
+         </div>
+     </div>
+ </nav>
+-
+-{{--Dynamic navbar--}}
+-{{--                @forelse(Config::get('navItemUsers') as $navItem)
+-                    <li class="nav-item">
+-                        <a class="nav-link {{ Request::is(strtolower(preg_replace('/\s+/', '', $navItem))) ? 'active' : '' }}"
+-                           href="{{'/'.strtolower(preg_replace('/\s+/', '', $navItem))}}">{{$navItem}}</a>
+-                    </li>
+-                @empty
+-                    <p>Error loading fields!</p>
+-                @endforelse--}}
+\ No newline at end of file
+Index: resources/views/pages/hotels.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/views/pages/hotels.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/pages/hotels.blade.php	(date 1555086619773)
+@@ -1,4 +1,4 @@
+-@extends('templates.default')
++@extends('layouts.app')
+ 
+ @section('title','Hotels')
+ @push('customStyles')
+Index: resources/views/pages/about.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/views/pages/about.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/pages/about.blade.php	(date 1555086609314)
+@@ -1,4 +1,4 @@
+-@extends('templates.default')
++@extends('layouts.app')
+ 
+ @section('title','Contact Us')
+ @push('customStyles')
+@@ -6,9 +6,9 @@
+ @endpush
+ 
+ @section('content')
+-
+-
+     <h1>Contact Us:</h1>
++    <h2>{{App\Role::where('role','=','user')->first()->id}}</h2>
++    <h2>{{App\Role::where('role','=','admin')->first()->id}}</h2>
+     <div class="mx-auto my-3">
+         {{--{!! Form::open(['url'=>'foo/bar']) !!}--}}
+         {{Form::open(['action'=> 'ContactsController@store','method' => 'POST'])}}
+Index: resources/views/templates/messages.blade.php
+===================================================================
+--- resources/views/templates/messages.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/partials/messages.blade.php	(date 1554733805132)
+Index: app/Http/Controllers/Auth/LoginController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/Auth/LoginController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/Auth/LoginController.php	(date 1555088054296)
+@@ -25,7 +25,7 @@
+      *
+      * @var string
+      */
+-    protected $redirectTo = '/home';
++    protected $redirectTo = '/';
+ 
+     /**
+      * Create a new controller instance.
+Index: app/Http/Controllers/Auth/VerificationController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/Auth/VerificationController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/Auth/VerificationController.php	(date 1555088020320)
+@@ -25,7 +25,7 @@
+      *
+      * @var string
+      */
+-    protected $redirectTo = '/home';
++    protected $redirectTo = '/';
+ 
+     /**
+      * Create a new controller instance.
+Index: resources/sass/app.scss
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/sass/app.scss	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/sass/app.scss	(date 1555340195935)
+@@ -11,4 +11,4 @@
+ .navbar-laravel {
+   background-color: #fff;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+-}
++}
+\ No newline at end of file
+Index: app/Http/Controllers/Auth/ResetPasswordController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/Auth/ResetPasswordController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/Auth/ResetPasswordController.php	(date 1555088067754)
+@@ -25,7 +25,7 @@
+      *
+      * @var string
+      */
+-    protected $redirectTo = '/home';
++    protected $redirectTo = '/';
+ 
+     /**
+      * Create a new controller instance.
+Index: resources/views/pages/home.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/views/pages/home.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/pages/home.blade.php	(date 1555087172877)
+@@ -1,4 +1,4 @@
+-@extends('templates.default')
++@extends('layouts.app')
+ 
+ @section('title','Home')
+ @push('customStyles')
+@@ -6,72 +6,5 @@
+ @endpush
+ 
+ @section('content')
+-    <div class="row align-items-center my-5">
+-        <div class="col-lg-7">
+-            <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+-        </div>
+-        <!-- /.col-lg-8 -->
+-        <div class="col-lg-5">
+-            <h1 class="font-weight-light">Business Name or Tagline</h1>
+-            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it,
+-                but it makes a great use of the standard Bootstrap core components. Feel free to use this template
+-                for any project you want!</p>
+-            <a class="btn btn-primary" href="#">Call to Action!</a>
+-        </div>
+-        <!-- /.col-md-4 -->
+-    </div>
+-    <!-- /.row -->
+-
+-    <!-- Call to Action Well -->
+-    <div class="card text-white bg-secondary my-5 py-4 text-center">
+-        <div class="card-body">
+-            <p class="text-white m-0">This call to action card is a great place to showcase some important
+-                information or display a clever tagline!</p>
+-        </div>
+-    </div>
+ 
+-    <!-- Content Row -->
+-    <div class="row">
+-        <div class="col-md-4 mb-5">
+-            <div class="card h-100">
+-                <div class="card-body">
+-                    <h2 class="card-title">Card One</h2>
+-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+-                </div>
+-                <div class="card-footer">
+-                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+-                </div>
+-            </div>
+-        </div>
+-        <!-- /.col-md-4 -->
+-        <div class="col-md-4 mb-5">
+-            <div class="card h-100">
+-                <div class="card-body">
+-                    <h2 class="card-title">Card Two</h2>
+-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex
+-                        natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore
+-                        voluptates quos eligendi labore.</p>
+-                </div>
+-                <div class="card-footer">
+-                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+-                </div>
+-            </div>
+-        </div>
+-        <!-- /.col-md-4 -->
+-        <div class="col-md-4 mb-5">
+-            <div class="card h-100">
+-                <div class="card-body">
+-                    <h2 class="card-title">Card Three</h2>
+-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+-                </div>
+-                <div class="card-footer">
+-                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+-                </div>
+-            </div>
+-        </div>
+-        <!-- /.col-md-4 -->
+-
+-    </div>
+ @endsection
+Index: app/Http/Controllers/Auth/RegisterController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/Auth/RegisterController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/Auth/RegisterController.php	(date 1555087975498)
+@@ -28,7 +28,7 @@
+      *
+      * @var string
+      */
+-    protected $redirectTo = '/home';
++    protected $redirectTo = '/';
+ 
+     /**
+      * Create a new controller instance.
+Index: resources/views/pages/test.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/views/pages/test.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/pages/test.blade.php	(date 1555086627315)
+@@ -1,4 +1,4 @@
+-@extends('templates.default')
++@extends('layouts.app')
+ 
+ @section('title','Test')
+ @push('customStyles')
+Index: app/Http/Controllers/PagesController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/PagesController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/PagesController.php	(date 1555369958842)
+@@ -30,7 +30,6 @@
+         return view('pages.hotels');
+     }
+ 
+-//    TODO Test getting data from DB on test site
+     public function test()
+     {
+         return view('pages.test');
+Index: database/seeds/UserTableSeeder.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/seeds/UserTableSeeder.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/seeds/UserTableSeeder.php	(date 1555425960531)
+@@ -1,6 +1,8 @@
+ <?php
+ 
+ use Illuminate\Database\Seeder;
++use App\User;
++use App\Role;
+ 
+ class UserTableSeeder extends Seeder
+ {
+@@ -11,6 +13,42 @@
+      */
+     public function run()
+     {
+-        factory(App\User::class, 20)->create();
++        $faker = Faker\Factory::create();
++
++//        $role_user = Role::where('role','=','user')->first();
++//        $role_admin  = Role::where('role','=','admin')->first();
++
++        //Generic user account for testing
++        $test_user = new User();
++        $test_user->name = 'user';
++        $test_user->email = 'user@example.com';
++        $test_user->email_verified_at = now();
++        $test_user->password = Hash::make('useruser');
++        $test_user->firstName = 'John';
++        $test_user->lastName = 'Doe';
++        $test_user->phone = $faker->numerify('+###########');
++        $test_user->address = $faker->address;
++        $test_user->role_id = 1;
++        $test_user->remember_token = Str::random(10);
++        $test_user->save();
++//        $test_user->roles()->attach($role_user);
++
++        //Generic admin account for testing
++        $test_admin = new User();
++        $test_admin->name = 'admin';
++        $test_admin->email = 'admin@example.com';
++        $test_admin->email_verified_at = now();
++        $test_admin->password = Hash::make('adminadmin');
++        $test_admin->firstName = 'Genghis';
++        $test_admin->lastName = 'Khan';
++        $test_admin->phone = $faker->numerify('+###########');
++        $test_admin->address = $faker->address;
++        $test_admin->role_id = 2;
++        $test_admin->remember_token = Str::random(10);
++        $test_admin->save();
++//        $test_admin->roles()->attach($role_admin);
++
++        factory(App\User::class, 40)->create(['role_id' => 1]);
++        factory(App\User::class, 8)->create(['role_id' => 2]);
+     }
+ }
+Index: app/Http/Controllers/OffersController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/OffersController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/OffersController.php	(date 1555098985443)
+@@ -14,6 +14,7 @@
+     public function index()
+     {
+         //
++
+     }
+ 
+     /**
+Index: resources/views/pages/showusers.blade.php
+===================================================================
+--- resources/views/pages/showusers.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/admin/showusers.blade.php	(date 1554251740459)
+Index: app/Http/Controllers/OrdersController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Http/Controllers/OrdersController.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Http/Controllers/OrdersController.php	(date 1555098988350)
+@@ -14,6 +14,7 @@
+     public function index()
+     {
+         //
++        return view('user.myorders');
+     }
+ 
+     /**
+Index: database/migrations/2019_03_24_121728_create_orders_table.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/migrations/2019_03_24_121728_create_orders_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/migrations/2019_03_24_121728_create_orders_table.php	(date 1554834419337)
+@@ -15,6 +15,8 @@
+     {
+         Schema::create('orders', function (Blueprint $table) {
+             $table->bigIncrements('id');
++            $table->string('description');
++//            $table->float('value')->unsigned();
+             $table->timestamps();
+         });
+     }
+Index: app/Order.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Order.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ app/Order.php	(date 1555425960561)
+@@ -4,7 +4,14 @@
+ 
+ use Illuminate\Database\Eloquent\Model;
+ 
++//use App\Offer;
++
+ class Order extends Model
+ {
+-    //
++    public function offers()
++    {
++//        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
++//        return $this->belongsToMany(User::class)->withTimestamps();
++        return $this->belongsToMany(Offer::class, 'offer_order')->withTimestamps();
++    }
+ }
+Index: database/migrations/2019_03_24_121609_create_roles_table.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- database/migrations/2019_03_24_121609_create_roles_table.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ database/migrations/2019_03_24_121609_create_roles_table.php	(date 1555108079465)
+@@ -16,6 +16,7 @@
+         Schema::create('roles', function (Blueprint $table) {
+             $table->bigIncrements('id');
+             $table->string('role');
++            $table->string('description');
+             $table->timestamps();
+         });
+ 
+Index: resources/views/templates/scripts.blade.php
+===================================================================
+--- resources/views/templates/scripts.blade.php	(revision 04a0fe0b72cd2413f5921e774123dc59546c5d61)
++++ resources/views/partials/scripts.blade.php	(date 1555425960590)
+@@ -1,9 +1,13 @@
+-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+-        crossorigin="anonymous"></script>
+-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+-        crossorigin="anonymous"></script>
+-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+-        crossorigin="anonymous"></script>
+\ No newline at end of file
++{{--DO NOT USE - LARAVEL USES CUSTOM BOOTSTRAP--}}
++
++{{--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"--}}
++{{--integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"--}}
++{{--crossorigin="anonymous"></script>--}}
++{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"--}}
++{{--integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"--}}
++{{--crossorigin="anonymous"></script>--}}
++{{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"--}}
++{{--integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"--}}
++{{--crossorigin="anonymous"></script>--}}
++
++{{--END OF DO NOT USE--}}
+\ No newline at end of file

@@ -15,9 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
-
-
+        return view('user.myprofile');
     }
 
     /**
@@ -49,7 +47,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.myprofile', ['user' => User::findOrFail($id)]);
     }
 
     /**

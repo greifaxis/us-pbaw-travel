@@ -16875,6 +16875,13 @@ namespace {
          * @return array
          * @static
          */
+
+        /**
+         * Routes for authentication.
+         *
+         * @return void
+         * @static
+         */
         public static function getRawBindings()
         {
             /** @var \Illuminate\Database\Query\Builder $instance */

@@ -14,17 +14,13 @@ class HotelsController extends Controller
      */
     public function index()
     {
-
         /*        $hotels = Hotel::where('id','>',1)->get();
                 hotelsFirst = Hotel::all()->take(1);
                 $hotelsFirst = Hotel::all()->first();
                 return $hotels;*/
 
-        $hotels = Hotel::orderBy('name', 'asc')->paginate(5);
-        return view('pages.hotels', [
-            'hotels' => $hotels,
-//            'hotelsFirst'=>$hotelsFirst
-        ]);
+        $hotels = Hotel::orderBy('name', 'asc')->get();
+        return view('pages.hotels', compact('hotels'));
     }
 
     /**
@@ -34,7 +30,8 @@ class HotelsController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Hotel::class);
+        return view('admin.addhotel');
     }
 
     /**
@@ -45,7 +42,25 @@ class HotelsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', Hotel::class);
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+            'stars' => 'required',
+            'image' => '',
+            'body' => 'required|max:1000'
+        ]);
+        $hotel = new Hotel;
+        $hotel->name = $request->input('name');
+        $hotel->city = $request->input('city');
+        $hotel->country = $request->input('country');
+        $hotel->stars = $request->input('stars');
+        $hotel->image = $request->input('image');
+        $hotel->body = $request->input('body');
+        $hotel->save();
+
+        return redirect('/hotels/create')->with('success', 'Hotel Added!');
     }
 
     /**
@@ -67,7 +82,8 @@ class HotelsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $hotel = Hotel::find($id);
+        return view('admin.edithotel', compact('hotel'));
     }
 
     /**
@@ -79,7 +95,26 @@ class HotelsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->authorize('create', Hotel::class);
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+            'stars' => 'required',
+            'image' => '',
+            'body' => 'required|max:1000'
+        ]);
+
+        $hotel = Hotel::find($id);
+        $hotel->name = $request->get('name');
+        $hotel->city = $request->get('city');
+        $hotel->country = $request->get('country');
+        $hotel->stars = $request->get('stars');
+        $hotel->image = $request->get('image');
+        $hotel->body = $request->get('body');
+        $hotel->save();
+
+        return redirect('/hotels')->with('success', 'Hotel has been updated');
     }
 
     /**
@@ -90,6 +125,9 @@ class HotelsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $hotel = Hotel::find($id);
+        $hotel->delete();
+
+        return redirect('/hotels')->with('success', 'Stock has been deleted Successfully');
     }
 }

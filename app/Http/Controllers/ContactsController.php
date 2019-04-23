@@ -16,7 +16,7 @@ class ContactsController extends Controller
     {
         //
 //        $hotels = Hotel::orderBy('name','asc')->paginate(5);
-        return view('pages.about');
+        return view('pages.contact');
 //            'hotels'=>$hotels,
 //            'hotelsFirst'=>$hotelsFirst
     }
@@ -29,7 +29,7 @@ class ContactsController extends Controller
     public function create()
     {
         //
-        return view('pages.about');
+        return view('pages.contact');
     }
 
     /**
@@ -44,9 +44,9 @@ class ContactsController extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'nullable|digits:2',
+            'areacode' => 'nullable|digits:2',
             'phone' => 'nullable|digits:9',
-            'body' => 'required|max:255'
+            'body' => 'required|max:1000'
         ]);
         $contact = new Contact;
         $contact->title = $request->input('title');
@@ -55,7 +55,7 @@ class ContactsController extends Controller
         $contact->body = $request->input('body');
         $contact->save();
 
-        return redirect('about')->with('success', 'Message Send');
+        return redirect('contacts')->with('success', 'Message Send');
     }
 
     /**

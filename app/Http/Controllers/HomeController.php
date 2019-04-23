@@ -28,10 +28,6 @@ class HomeController extends Controller
 
     public function home()
     {
-        /*        $data = array(
-                    'navItems' => $this->navItemsUser
-                );
-                return view('pages.home')->with($data);*/
         return view('home');
     }
 
@@ -40,18 +36,9 @@ class HomeController extends Controller
         return view('pages.tours');
     }
 
-    public function hotels()
-    {
-        return view('pages.hotels');
-    }
 
-    public function test()
-    {
-        return view('pages.test');
-    }
-
-    public function admin()
-    {
-        return view('admin');
-    }
+//    public function admin()
+//    {
+//        return view('admin');
+//    }
 }

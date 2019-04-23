@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('layouts.app')
 
 @section('title','Show Users')
 @push('customStyles')

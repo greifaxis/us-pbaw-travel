@@ -6,7 +6,6 @@
 @endpush
 
 @section('content')
-    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-9 mx-auto">
                 <div class="card card-signin flex-row my-5">
@@ -126,5 +125,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

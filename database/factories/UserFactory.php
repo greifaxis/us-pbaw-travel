@@ -17,7 +17,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    $company = $faker->boolean($chanceOfGettingTrue = 75) ? $faker->company : null;
+    $company = $faker->boolean($chanceOfGettingTrue = 20) ? $faker->company : null;
     return [
         'name' => $faker->unique()->userName,
         'email' => $faker->unique()->safeEmail,
@@ -26,8 +26,8 @@ $factory->define(User::class, function (Faker $faker) {
         'firstName' => $faker->firstName,
         'lastName' => $faker->lastName,
         'company' => $company,
-        'nipnum' => ($company <> null) ? $faker->isbn10 : null,
-        'phone' => $faker->numerify('+###########'),
+        'nipnum' => ($company <> null) ? $faker->unique()->numerify('##########') : null,
+        'phone' => $faker->unique()->numerify('+48#########'),
         'address' => $faker->address,
         'remember_token' => Str::random(10),
 //        'role_id' => Role::all()->random()->id,

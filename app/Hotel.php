@@ -13,5 +13,8 @@ class Hotel extends Model
 //    Timestamps
     public $timestamps = true;
 
-
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
 }

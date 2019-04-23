@@ -2,7 +2,7 @@
 
 @section('title','Contact Us')
 @push('customStyles')
-    <link rel="stylesheet" href="{{asset('css/tours.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('css/tours.css')}}">--}}
 @endpush
 
 @section('content')

@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
-use App\RoleUser;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HotelTableSeeder::class);
         $this->call(ContactTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(OfferTableSeeder::class);
 
         Eloquent::reguard();
     }
