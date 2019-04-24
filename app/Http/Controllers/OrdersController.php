@@ -14,7 +14,7 @@ class OrdersController extends Controller
     public function index()
     {
         //
-        return view('user.myorders');
+        return view('user.order');
     }
 
     /**
@@ -80,6 +80,9 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Hotel::find($id);
+        $user->delete();
+
+        return redirect('/hotels')->with('success', 'Stock has been deleted Successfully');
     }
 }

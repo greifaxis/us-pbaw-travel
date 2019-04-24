@@ -21,7 +21,8 @@ Route::resource('/hotels', 'HotelsController');
 Route::resource('/contact', 'ContactsController');
 Route::resource('/tours', 'OffersController');
 Route::resource('/order', 'OrdersController')->middleware('auth');
-Route::resource('/user', 'UsersController');
+Route::resource('/user', 'UsersController')->middleware('auth');
+Route::resource('/password', 'PasswordsController')->middleware('auth');
 //Route::resource('/myprofile', 'ProfilesController')->middleware('auth');
 
 //Route::get('admin/routes', 'HomeController@admin')->middleware('admin');

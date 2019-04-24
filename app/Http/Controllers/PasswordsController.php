@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
-class DatabaseController extends Controller
+class PasswordsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,13 +22,7 @@ class DatabaseController extends Controller
      */
     public function index()
     {
-//        $admins = Role::with('users')->where('role','admin')->get();
-        $admins = User::whereHas('role', function ($query) {
-            $query->where('role', 'admin');
-        })->pluck('email')->toArray();
-//        dd(json_decode($admins));
-//        dd($admins);
-        return view('guest.database', ['admins' => $admins]);
+        //
     }
 
     /**
@@ -64,7 +65,8 @@ class DatabaseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        return view('user.password', compact('user'));
     }
 
     /**
@@ -76,7 +78,26 @@ class DatabaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (!(Hash::check($request->get('password_current'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error", "Wrong current password!");
+        }
+        if (strcmp($request->get('password'), $request->get('password_current')) == 0) {
+            //Current password and new password are same
+            return redirect()->back()->with("error", "New password same as current!");
+        }
+
+        $this->validate($request, [
+            'password_current' => 'required|string|max:255',
+            'password' => 'required|string|min:8|max:255|same:password',
+            'password_confirmed' => 'required|string|min:8|max:255|same:password',
+        ]);
+
+        //Change Password
+        $user = Auth::user();
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
+        return redirect()->route('user.show', Auth::id())->with("success", "Password changed successfully!");
     }
 
     /**

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Http\Controllers\PagesController;
 
 class UsersController extends Controller
 {
@@ -13,9 +13,21 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+
     public function index()
     {
-        return view('user.myprofile');
+        return view('user.profile');
     }
 
     /**
@@ -47,7 +59,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return view('user.myprofile', ['user' => User::findOrFail($id)]);
+        $user = Auth::user();
+        return view('user.profile', compact('user'));
     }
 
     /**
@@ -70,7 +83,39 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required|email|unique:users,email,' . Auth::id(),
+            'firstName' => 'required|string|max:255,firstName,' . Auth::id(),
+            'lastName' => 'required|string|max:255,lastName,' . Auth::id(),
+            'company' => 'nullable|string|max:255',
+            'nipnum' => 'nullable|string|max:255',
+            'phone' => 'required|string|max:255,phone,' . Auth::id(),
+            'address' => 'required|string|max:255',
+        ]);
+
+        $user = Auth::user();
+
+        $user->email = $request->get('email');
+        $user->firstName = $request->get('firstName');
+        $user->lastName = $request->get('lastName');
+        $user->company = $request->get('company');
+        $user->nipnum = $request->get('nipnum');
+        $user->phone = $request->get('phone');
+        $user->address = $request->get('address');
+        $user->save();
+
+        return redirect('/user')->with('success', 'Profile updated!');
+//                    Rule::unique('users')->ignore($user->id)
+        /*        $user->name = $request->get('name');
+                $user->email = $request->get('email');
+                $user->password = $request->get('password');
+                $user->firstName = $request->get('firstName');
+                $user->lastName = $request->get('lastName');
+                $user->company = $request->get('company');
+                $user->nipnum = $request->get('nipnum');
+                $user->phone = $request->get('phone');
+                $user->address = $request->get('address');
+                $user->save();*/
     }
 
     /**
@@ -81,6 +126,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/user')->with('success', 'Profile updated!');
     }
 }

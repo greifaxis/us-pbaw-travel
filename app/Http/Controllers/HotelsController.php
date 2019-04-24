@@ -95,26 +95,26 @@ class HotelsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('create', Hotel::class);
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'city' => 'required|max:255',
-            'country' => 'required|max:255',
-            'stars' => 'required',
-            'image' => '',
-            'body' => 'required|max:1000'
-        ]);
+        /*        $this->authorize('create', Hotel::class);
+                $this->validate($request, [
+                    'name' => 'required|max:255',
+                    'city' => 'required|max:255',
+                    'country' => 'required|max:255',
+                    'stars' => 'required',
+                    'image' => '',
+                    'body' => 'required|max:1000'
+                ]);
 
-        $hotel = Hotel::find($id);
-        $hotel->name = $request->get('name');
-        $hotel->city = $request->get('city');
-        $hotel->country = $request->get('country');
-        $hotel->stars = $request->get('stars');
-        $hotel->image = $request->get('image');
-        $hotel->body = $request->get('body');
-        $hotel->save();
+                $hotel = Hotel::find($id);
+                $hotel->name = $request->get('name');
+                $hotel->city = $request->get('city');
+                $hotel->country = $request->get('country');
+                $hotel->stars = $request->get('stars');
+                $hotel->image = $request->get('image');
+                $hotel->body = $request->get('body');
+                $hotel->save();
 
-        return redirect('/hotels')->with('success', 'Hotel has been updated');
+                return redirect('/hotels')->with('success', 'Hotel has been updated');*/
     }
 
     /**
