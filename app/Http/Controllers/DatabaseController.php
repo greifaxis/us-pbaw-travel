@@ -24,7 +24,9 @@ class DatabaseController extends Controller
 //        dd($admins);
 
         $offers = Offer::count();
-        $offersWithPlaces = Offer::where('places_free','>=','1')->count();
+        $offers1 = Offer::where('places_free','>=','1')->get();
+        $offersWithPlaces = $offers1->random();
+
         return view('guest.database', compact('admins','offers','offersWithPlaces'));
     }
 
