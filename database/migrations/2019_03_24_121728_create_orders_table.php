@@ -15,8 +15,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('description');
-//            $table->float('value')->unsigned();
+            $table->unsignedDecimal('total');
+            $table->string('status');
+            $table->string('billing_firstName')->nullable();
+            $table->string('billing_lastName')->nullable();
+            $table->string('billing_company')->nullable();
+            $table->string('billing_nipnum')->nullable();
+            $table->string('billing_phone')->nullable();
+            $table->string('billing_address')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->dateTime('placed_at');
+            $table->dateTime('finished_at');
             $table->timestamps();
         });
     }

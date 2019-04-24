@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ContactTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(OfferTableSeeder::class);
+        $this->call(OfferOrderTableSeeder::class);
+        $this->call(OrderTableSeeder::class);
 
         Eloquent::reguard();
     }

@@ -25,7 +25,7 @@ class Offer extends Model
     {
 //        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
 //        return $this->belongsToMany(User::class)->withTimestamps();
-        return $this->belongsToMany(Order::class, 'offer_order')->withTimestamps();
+        return $this->belongsToMany('App\Order', 'offer_order', 'offer_id', 'order_id')->withPivot('places')->withTimestamps();
     }
 
     public function hotel()

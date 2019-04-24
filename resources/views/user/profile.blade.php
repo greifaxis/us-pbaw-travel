@@ -24,20 +24,13 @@
                             {{session('success')}}
                         </div>
                     @endif
-                    {{--                @if ($errors->any())
-                                                <ul class="list-group">
-                                                    @foreach ($errors->all() as $error)
-                                                        <li class="list-group-item list-group-item-danger p-2 p-sm-1">{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                    @endif--}}
                 </div>
-                {{--            <div class="card-footer">
-                                <div class="btn btn-success btn-block mt-3"><i class="fas fa-money-bill-wave mr-1"></i>BUY</div>
-                            </div>--}}
+                {{--TODO DELETE PROFILE WITH JQUERY--}}
+                <div class="card-footer">
+                    <div class="btn btn-danger btn-block"><i class="fas fa-skull mr-1"></i>DELETE PROFILE</div>
+                </div>
             </div>
         </div>
-
 
         <div class="col-lg-9">
             <div class="row">
@@ -76,10 +69,6 @@
                                 {{Form::label('nipnum','NIP',['class'=>'col-sm-3 col-form-label'])}}
                                 {{Form::text('nipnum',Auth::user()->nipnum,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
-                            {{--                        <div class="form-group mr-1 ml-3">
-                                                        {{Form::label('body','Description')}}
-                                                        {{Form::textarea('body','',['class'=>'form-control'])}}
-                                                    </div>--}}
                         </div>
                         <div class="card-footer">
                             <div class="row">
@@ -95,6 +84,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

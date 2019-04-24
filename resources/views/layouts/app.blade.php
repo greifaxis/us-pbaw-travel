@@ -8,7 +8,7 @@
     @include('partials.navbar')
     <main role="main" class="flex-shrink-0">
     <div class="container">
-        {{--TODO Think aboout implementing this messages--}}
+        {{--TODO MAYBE: IMPLEMENT GLOBAL MESSAGES--}}
         {{--@include('partials.messages')--}}
         @yield('content')
     </div>
