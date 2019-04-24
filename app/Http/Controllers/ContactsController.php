@@ -55,7 +55,7 @@ class ContactsController extends Controller
         $contact->body = $request->input('body');
         $contact->save();
 
-        return redirect('contacts')->with('success', 'Message Send');
+        return redirect()->back()->with('success', 'Message Send');
     }
 
     /**

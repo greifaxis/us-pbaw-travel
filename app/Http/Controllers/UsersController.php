@@ -104,7 +104,7 @@ class UsersController extends Controller
         $user->address = $request->get('address');
         $user->save();
 
-        return redirect('/user')->with('success', 'Profile updated!');
+        return redirect()->route('user.show',Auth::id())->with('success', 'Profile updated!');
 //                    Rule::unique('users')->ignore($user->id)
         /*        $user->name = $request->get('name');
                 $user->email = $request->get('email');

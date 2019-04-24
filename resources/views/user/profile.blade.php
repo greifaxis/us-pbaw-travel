@@ -14,16 +14,23 @@
                     <span class="d-flex flex-row mt-2">{{Auth::user()->firstName.' '.Auth::user()->lastName}}</span>
                 </div>
                 <div class="card-body d-flex flex-column">
-                    @if (session('error'))
-                        <div class="alert alert-danger p-2 p-sm-1">
-                            {{session('error')}}
-                        </div>
-                    @endif
-                    @if(session('success'))
-                        <div class="alert alert-success p-2 p-sm-1">
+                @if(session('success'))
+                        <div class="alert alert-success p-2 p-sm-1 my-0">
                             {{session('success')}}
                         </div>
                     @endif
+                @if(session('error'))
+                        <div class="alert alert-danger p-2 p-sm-1 my-0">
+                            {{session('error')}}
+                        </div>
+                    @endif
+                @if($errors->any())
+                    <div class="alert alert-danger p-2 p-sm-1 my-0">
+                        @foreach ($errors->all() as $error)
+                                <div class="my-1">{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
                 </div>
                 {{--TODO DELETE PROFILE WITH JQUERY--}}
                 <div class="card-footer">

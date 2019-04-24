@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Offer;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,10 @@ class DatabaseController extends Controller
         })->pluck('email')->toArray();
 //        dd(json_decode($admins));
 //        dd($admins);
-        return view('guest.database', ['admins' => $admins]);
+
+        $offers = Offer::count();
+        $offersWithPlaces = Offer::where('places_free','>=','1')->count();
+        return view('guest.database', compact('admins','offers','offersWithPlaces'));
     }
 
     /**

@@ -6,8 +6,9 @@
 @endpush
 
 @section('content')
-    <h1>Omg</h1>
-    {{in_array('addsas',['dupa','cycki'])}}
+    <h1>Omg {{in_array('dupa',['dupa','cycki'])}}</h1>
+    <p>Offers: {{$offers}}</p>
+    <p>Not empty offers: {{$offersWithPlaces}}</p>
 {{--<div class="my-2">@forelse($admins as $admin)
    <span class="font-weight-light small">{{$admin}}</span>  <br>
     @empty
