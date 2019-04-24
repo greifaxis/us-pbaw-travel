@@ -95,7 +95,7 @@ class HotelsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*        $this->authorize('create', Hotel::class);
+               $this->authorize('create', Hotel::class);
                 $this->validate($request, [
                     'name' => 'required|max:255',
                     'city' => 'required|max:255',
@@ -114,7 +114,7 @@ class HotelsController extends Controller
                 $hotel->body = $request->get('body');
                 $hotel->save();
 
-                return redirect('/hotels')->with('success', 'Hotel has been updated');*/
+                return redirect()-> route("hotels.edit", $id)-> with('success', 'Hotel has been updated');
     }
 
     /**

@@ -30,7 +30,8 @@ class OffersController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Offer::class);
+        return view('admin.addoffer');
     }
 
     /**
@@ -41,7 +42,50 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', Offer::class);
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'sale' => '',
+            'date_begin'=>'required|date',
+            'date_end'  => 'required|date',
+            'highlight' => 'required|max:255',
+            'body' => 'required|max:1000',
+            'places_max' => 'required|max:100',
+            'places_free' => 'required|max:100',
+            'airport' => 'required|max:255',
+            'image1' => 'required',
+            'image2' => 'required',
+            'image3' => 'required',
+            'image4' => 'required',
+            'image5' => 'required',
+            'hotel_id' => 'required|max:255'
+        ]);
+        $offer = new Offer;
+        $offer->name = $request->input('name');
+        $offer->price = $request->input('price');
+        $offer->sale = $request->input('sale');
+        $offer->date_begin = $request->input('date_begin');
+        $offer->date_end = $request->input('date_end');
+        $offer->highlight = $request->input('highlight');
+        $offer->body = $request->input('body');
+        $offer->places_max = $request->input('places_max');
+        $offer->places_free = $request->input('places_free');
+        $offer->airport = $request->input('airport');
+        $offer->images = json_encode([
+            $request->input('image1'),
+            $request->input('image2'),
+            $request->input('image3'),
+            $request->input('image4'),
+            $request->input('image5'),
+
+        ],JSON_FORCE_OBJECT);
+        //$offer->images = $request->input('images');
+        $offer->hotel_id = $request->input('hotel_id');
+        $offer->save();
+
+        return redirect()->back()->with('success', 'Offer Added!');
+
     }
 
     /**
@@ -63,7 +107,8 @@ class OffersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $offer = Offer::find($id);
+        return view('admin.editoffer', compact('offer'));
     }
 
     /**
@@ -75,7 +120,49 @@ class OffersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$this->authorize('create', Offer::class);
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'sale' => '',
+            'date_begin'=>'required|date',
+            'date_end'  => 'required|date',
+            'highlight' => 'required|max:255',
+            'body' => 'required|max:1000',
+            'places_max' => 'required|max:100',
+            'places_free' => 'required|max:100',
+            'airport' => 'required|max:255',
+            'image1' => 'required',
+            'image2' => 'required',
+            'image3' => 'required',
+            'image4' => 'required',
+            'image5' => 'required',
+            'hotel_id' => 'required|max:255'
+        ]);
+        $offer = Offer::find($id);
+        $offer->name = $request->input('name');
+        $offer->price = $request->input('price');
+        $offer->sale = $request->input('sale');
+        $offer->date_begin = $request->input('date_begin');
+        $offer->date_end = $request->input('date_end');
+        $offer->highlight = $request->input('highlight');
+        $offer->body = $request->input('body');
+        $offer->places_max = $request->input('places_max');
+        $offer->places_free = $request->input('places_free');
+        $offer->airport = $request->input('airport');
+        $offer->images = json_encode([
+            $request->input('image1'),
+            $request->input('image2'),
+            $request->input('image3'),
+            $request->input('image4'),
+            $request->input('image5'),
+
+        ],JSON_FORCE_OBJECT);
+        //$offer->images = $request->input('images');
+        $offer->hotel_id = $request->input('hotel_id');
+        $offer->save();
+
+        return redirect()->back()->with('success', 'Offer Updated!');
     }
 
     /**
@@ -84,8 +171,13 @@ class OffersController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+        public function destroy($id)
     {
-        //
+        $offer = Offer::find($id);
+        $offer->delete();
+
+        return redirect('/tours')->with('success', 'Stock has been deleted Successfully');
     }
+
 }

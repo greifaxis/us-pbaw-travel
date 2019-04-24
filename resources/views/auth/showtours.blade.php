@@ -11,7 +11,7 @@
     <div class="col-lg-3 mb-4">
 
         <div class="card h-100">
-            <div class="card-header d-flex align-items-center justify-content-center h3">
+            <div id="offer-name" class="card-header d-flex align-items-center justify-content-center h3">
                 {{$offer->name}}
             </div>
             <div class="card-body d-flex flex-column">
@@ -34,6 +34,14 @@
                 <input type="number" id="changedInput" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary"/>
                 <div class="btn btn-success btn-block mt-3"><i class="fas fa-money-bill-wave mr-1"></i>BUY</div>
             </div>
+            <div class="card-footer">
+                <div class="mb-1">
+                    <a href="{{route('tours.edit', $offer->id)}}"class="btn btn-outline-dark btn-block">EDIT</a>
+                </div>
+                <div >
+                    <a href="javascript:" data-toggle="modal" onclick="deleteData({{$offer->id}})" data-target="#DeleteModal" class="btn btn-outline-danger btn-block">DELETE</a>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -49,12 +57,14 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
+                    @if(isset($offer->images))
                     @forelse(json_decode($offer->images,true) as $image)
                         <div class="carousel-item {{$loop->first ? ' active' : ''}}">
                                 <img class="d-block img-fluid rounded" src="{{$image}}" alt="First slide">
                         </div>
                     @empty
                     @endforelse
+                    @endif
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,6 +115,28 @@
     </div>
 </div>
 
+<div id="DeleteModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <form action="{{route('tours.destroy', $offer->id)}}" id="deleteForm" method="post">
+            @csrf
+            @method('DELETE')
+            <div class="modal-content">
+                <div class="modal-header align-content-center p-3">
+                    <h5 class="modal-title">Confirm delete</h5>
+                    <button type="button" class="btn close" data-dismiss="modal"><i class="far fa-window-close"></i></button>
+                </div>
+                <div class="modal-body">
+                    Do you wish to delete <span id="offer-delete-name"></span>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal" onclick="formSubmit()">DELETE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script src="./src/bootstrap-input-spinner.js"></script>
 <script>
     $("input[type='number']").inputSpinner();
@@ -115,5 +147,20 @@
     $changedInput.on("input", function (event) {
         $valueOnInput.html({{$offer->places_free}}-$changedInput.val())
     })
+
+    function deleteData(id)
+    {
+        var id = id;
+        var url = '{{ route("tours.destroy", ":id") }}';
+        url = url.replace(':id', id);
+        var node = document.getElementById("offer-name");
+        document.getElementById("offer-delete-name").innerHTML = node.textContent;
+        $("#deleteForm").attr('action', url);
+    }
+
+    function formSubmit()
+    {
+        $("#deleteForm").submit();
+    }
 </script>
 @endsection

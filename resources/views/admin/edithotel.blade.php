@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Add Hotel')
+@section('title','Edit Hotel')
 @push('customStyles')
     {{--<link rel="stylesheet" href="{{asset('css/navbar-fixed-left.min.css')}}">--}}
 @endpush
@@ -15,15 +15,14 @@
                     Edit Hotel
                 </div>
                 <div class="card-body">
-                    @if ($errors->any())
-                        <div class="row mb-4">
-                            <div class="col-md-6 offset-md-3">
-                                <ul class="list-group">
-                                    @foreach ($errors->all() as $error)
-                                        <li class="list-group-item list-group-item-danger py-sm-0">{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                    @if (session('error'))
+                        <div class="alert alert-danger p-2 p-sm-1">
+                            {{session('error')}}
+                        </div>
+                    @endif
+                    @if(session('success'))
+                        <div class="alert alert-success p-2 p-sm-1">
+                            {{session('success')}}
                         </div>
                     @endif
 

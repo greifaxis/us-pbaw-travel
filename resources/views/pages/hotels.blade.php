@@ -46,17 +46,17 @@
                             <h4>Location: {{$hotel->city}}, {{$hotel->country}}</h4>
                         </div>
                         @can('create', App\Hotel::class)
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="{{route('hotels.edit', $hotel->id)}}" class="btn btn-outline-dark btn-block">EDIT</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="javascript:" data-toggle="modal" onclick="deleteData({{$hotel->id}})" data-target="#DeleteModal" class="btn btn-outline-danger btn-block">DELETE</a>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="{{route('hotels.edit', $hotel->id)}}" class="btn btn-outline-dark btn-block">EDIT</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="javascript:" data-toggle="modal" onclick="deleteData({{$hotel->id}})" data-target="#DeleteModal" class="btn btn-outline-danger btn-block">DELETE</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            @endcan
+                        @endcan
                     </div>
                 @empty
                     <div class="card mt-4">
