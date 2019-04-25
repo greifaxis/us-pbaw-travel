@@ -6,8 +6,11 @@
 @endpush
 
 @section('content')
-    <h1>Omg</h1>
-    {{in_array('addsas',['dupa','cycki'])}}
+    <h1>Omg {{!empty($admins) ? $admins : 'PUSTE'}}</h1>
+    <p>Offers max places sum: {{$offers}}</p>
+    <p>Offers free places sum:: {{$offersWithPlaces}}</p>
+    <p>Offers taken places sum:: {{$offers-$offersWithPlaces}}</p>
+    <p>OfferOrders sum: {{$ordersSum}}</p>
 {{--<div class="my-2">@forelse($admins as $admin)
    <span class="font-weight-light small">{{$admin}}</span>  <br>
     @empty

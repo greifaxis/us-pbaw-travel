@@ -25,7 +25,7 @@ $factory->define(Offer::class, function (Faker $faker) {
     $price = $faker->randomNumber($nbDigits = 2, $strict = true) * 100 + 99;
     $sale = $faker->boolean($chanceOfGettingTrue = 40) ? $faker->numberBetween($min = $price * 0.5, $max = $price * 0.9) + 0.99 : null;
 
-    $place_max = $faker->numberBetween($min = 20, $max = 90);
+    $place_max = $faker->numberBetween($min = 20, $max = 80);
 
     $date_begin = $faker->dateTimeBetween($startDate = 'now', $endDate = '+1 year');
     $date_end_begin = clone $date_begin;
@@ -55,7 +55,8 @@ $factory->define(Offer::class, function (Faker $faker) {
         'highlight' => $faker->sentence($nbWords = 10, $variableNbWords = false),
         'body' => $faker->text($maxNbChars = 800, $variableNbWords = true),
         'places_max' => $place_max,
-        'places_free' => $faker->biasedNumberBetween($min = 0, $max = $place_max - 3, $function = 'Faker\Provider\Biased::linearLow'),
+//        'places_free' => $faker->biasedNumberBetween($min = 0, $max = $place_max - 3, $function = 'Faker\Provider\Biased::linearLow'),
+        'places_free' => $place_max,
         'airport' => $faker->randomElement($array = array(
             'Chopin, Warsaw',
             'Lech Walesa, Gdansk',

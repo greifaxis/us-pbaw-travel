@@ -15,18 +15,25 @@
                     Edit Hotel
                 </div>
                 <div class="card-body">
-                    @if (session('error'))
-                        <div class="alert alert-danger p-2 p-sm-1">
-                            {{session('error')}}
-                        </div>
-                    @endif
+
                     @if(session('success'))
-                        <div class="alert alert-success p-2 p-sm-1">
-                            {{session('success')}}
+                            <div class="alert alert-success p-2 p-sm-1 my-0">
+                                {{session('success')}}
+                            </div>
+                        @endif
+                    @if (session('error'))
+                            <div class="alert alert-danger p-2 p-sm-1 my-0">
+                                {{session('error')}}
+                            </div>
+                        @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger p-2 p-sm-1 my-0">
+                            @foreach ($errors->all() as $error)
+                                    <div class="my-1">{{ $error }}</div>
+                            @endforeach
                         </div>
                     @endif
 
-                    {{--{!! Form::open(['url'=>'foo/bar']) !!}--}}
                     {{Form::open(['action'=> ['HotelsController@update',$hotel->id],'method' => 'POST'])}}
                         @method('PATCH')
                         @csrf

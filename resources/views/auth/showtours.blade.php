@@ -47,6 +47,7 @@
     </div>
 
     <div class="col-lg-9">
+    @if(isset($offer->images))
         <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide mb-4 mx-3" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -57,14 +58,16 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    @if(isset($offer->images))
+                
+                    
                     @forelse(json_decode($offer->images,true) as $image)
+
                         <div class="carousel-item {{$loop->first ? ' active' : ''}}">
-                                <img class="d-block img-fluid rounded" src="{{$image}}" alt="First slide">
+                                <img class="d-block img-fluid rounded" src="{{$imageURL}}" alt="First slide">
                         </div>
                     @empty
                     @endforelse
-                    @endif
+                    
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,7 +79,7 @@
                 </a>
             </div>
         </div>
-
+@endif
         <div class="row">
             <div class="col-6 mb-4">
                 <div class="card h-100">
