@@ -23,7 +23,13 @@
             <div class="row">
                 <div class="panel-group col-12">
                     <div class="panel panel-default">
+                        <div class="row my-2">
+                            <div class="col-sm-8 offset-2">
+                                <a href="{{route('tours.create')}}" class="btn btn-outline-dark btn-block align-content-center p-2"><i class="fas fa-plus-square fa-lg"></i> ADD OFFER</a>
+                            </div>
+                        </div>
                         <div class="panel-heading">
+
                             <h5 class="panel-title">
                                 {{--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tourlist">Tours list</button>--}}
                                 <a data-toggle="collapse" href="#tour-list" class="btn btn-dark btn-block" id="tour-list-toggle"><i id="tour-list-arrow" class="fas mr-1 fa-chevron-circle-down"></i>Available tours</a>
