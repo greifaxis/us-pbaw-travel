@@ -16,11 +16,12 @@ class OffersController extends Controller
     public function index()
     {
         $offers = Offer::where('places_free', '>', 0)->get();
+        $offersFull = Offer::where('places_free', '<=', 0)->get();
         $best_offers = Offer::where('places_free', '>', 0)->orderBy('places_free', 'asc')->take(3)->get();
 //        $best_offers_images = Offer::where('places_free','>',0)->orderBy('places_free','asc')->take(3)->pluck('images')->toArray();
         $hotels = Hotel::all();
 
-        return view('guest.tours', compact('offers', 'hotels', 'best_offers'));
+        return view('guest.tours', compact('offers', 'hotels', 'best_offers','offersFull'));
     }
 
     /**

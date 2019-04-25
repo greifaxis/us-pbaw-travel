@@ -30,18 +30,22 @@
                 <p class="card-text"><i class="fas fa-plane mr-1"></i>{{$offer->airport}}</p>
                 <p class="card-text{{$offer->places_free<=3 ? ' text-danger' : ''}} d-flex align-self-baseline my-2"><i class="fas fa-users my-1 mr-1"></i>Places left:<span class="ml-2" id="valueOnInput">{{$offer->places_free}}</span>/{{$offer->places_max}}</p>
             </div>
+            @can('create', App\Offer::class)
+                <div class="card-footer">
+                    <div class="mb-1">
+                        <a href="{{route('tours.edit', $offer->id)}}"class="btn btn-outline-dark btn-block">EDIT</a>
+                    </div>
+                    <div >
+                        <a href="javascript:" data-toggle="modal" onclick="deleteData({{$offer->id}})" data-target="#DeleteModal" class="btn btn-outline-danger btn-block">DELETE</a>
+                    </div>
+                </div>
+            @else
             <div class="card-footer">
                 <input type="number" id="changedInput" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary"/>
                 <div class="btn btn-success btn-block mt-3"><i class="fas fa-money-bill-wave mr-1"></i>BUY</div>
             </div>
-            <div class="card-footer">
-                <div class="mb-1">
-                    <a href="{{route('tours.edit', $offer->id)}}"class="btn btn-outline-dark btn-block">EDIT</a>
-                </div>
-                <div >
-                    <a href="javascript:" data-toggle="modal" onclick="deleteData({{$offer->id}})" data-target="#DeleteModal" class="btn btn-outline-danger btn-block">DELETE</a>
-                </div>
-            </div>
+            @endcan
+
         </div>
 
     </div>
@@ -57,10 +61,10 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
-                <div class="carousel-inner" role="listbox">
+                <div class="carousel-inner rounded" role="listbox">
                 
                     
-                    @forelse(json_decode($offer->images,true) as $image)
+                    @forelse(json_decode($offer->images,true) as $imageURL)
 
                         <div class="carousel-item {{$loop->first ? ' active' : ''}}">
                                 <img class="d-block img-fluid rounded" src="{{$imageURL}}" alt="First slide">

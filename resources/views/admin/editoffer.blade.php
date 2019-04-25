@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group row mx-1">
                         {{Form::label('date_end','Date End',['class'=>'col-sm-3 col-form-label'])}}
-                        <input type="date" name="date_end" value="{{$offer->date_end}}"/>
+                        <input type="date" name="date_end" value="{{$offer->date_end->format('Y-m-d')}}"/>
                     </div>
                     <div class="form-group row mx-1">
                         {{Form::label('highlight','Highlight',['class'=>'col-sm-3 col-form-label'])}}

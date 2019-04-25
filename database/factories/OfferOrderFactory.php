@@ -26,10 +26,11 @@ $factory->define(OfferOrder::class, function (Faker $faker) {
     //TODO OFFER GENERATOR
     $places = $faker->biasedNumberBetween($min = 1, $max = ceil($offer->places_free/4), $function = 'Faker\Provider\Biased::linearLow');
 
-/*    $offer->places_free = $offer->places_free-$places;
+    $offer->places_free = $offer->places_free-$places;
     $offer->save();
-    $order->total += isset($offer->sale) ? $places*$offer->sale : $places*$offer->price;;
-    $order->save();*/
+
+//    $order->total += isset($offer->sale) ? $places*$offer->sale : $places*$offer->price;;
+//    $order->save();
 
     return [
         'offer_id' => $offer->id,

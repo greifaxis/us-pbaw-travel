@@ -6,6 +6,7 @@
 @endpush
 
 @section('content')
+
     <div class="row m-4">
         <div class="col-lg-3">
             <div class="card h-100">
@@ -42,9 +43,11 @@
                 @endif
                 </div>
                 {{--TODO DELETE PROFILE WITH JQUERY--}}
+                @if($isOwner)
                 <div class="card-footer">
                     <div class="btn btn-danger btn-block"><i class="fas fa-skull mr-1"></i>DELETE PROFILE</div>
                 </div>
+                @endif
             </div>
         </div>
 
@@ -54,46 +57,56 @@
                     <div class="card mx-auto">
                         <div class="card-header h3">Edit profile</div>
                         <div class="card-body">
-                            {{Form::open(['action'=> ['UsersController@update',Auth::id()],'method' => 'POST'])}}
+                            {{Form::model($roles, ['action'=> ['UsersController@update',$user->id]])}}
+                            {{--{{Form::open(['action'=> ['UsersController@update',Auth::id()],'method' => 'POST'])}}--}}
                             @method('PATCH')
                             @csrf
                             <div class="form-group row mx-1">
                                 {{Form::label('email','Email',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('email',Auth::user()->email,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('email',$user->email,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
                             <div class="form-group row mx-1">
                                 {{Form::label('firstName','First Name',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('firstName',Auth::user()->firstName,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('firstName',$user->firstName,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
                             <div class="form-group row mx-1">
                                 {{Form::label('lastName','Last Name',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('lastName',Auth::user()->lastName,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('lastName',$user->lastName,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
                             <div class="form-group row mx-1">
                                 {{Form::label('phone','Phone',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('phone',Auth::user()->phone,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('phone',$user->phone,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
                             <div class="form-group row mx-1">
                                 {{Form::label('address','Address',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('address',Auth::user()->address,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('address',$user->address,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
                             <div class="form-group row mx-1">
                                 {{Form::label('company','Company',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('company',Auth::user()->company,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('company',$user->company,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
                             <div class="form-group row mx-1">
                                 {{Form::label('nipnum','NIP',['class'=>'col-sm-3 col-form-label'])}}
-                                {{Form::text('nipnum',Auth::user()->nipnum,['class'=>'form-control col-sm-9','maxlength' => 255])}}
+                                {{Form::text('nipnum',$user->nipnum,['class'=>'form-control col-sm-9','maxlength' => 255])}}
                             </div>
+                            <div class="form-group row mx-1">
+                            @if (Auth::user()->role()->value('role')=='admin')
+                                {{Form::label('role','Role',['class'=>'col-sm-3 col-form-label'])}}
+                                {{Form::select("role",$roles, Auth::user()->role()->value('role'),["class" => "form-control col-sm-9"])}}
+                            @endif
+                            </div>
+
                         </div>
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-6">
                                     {{Form::submit('SUBMIT',['class'=>'btn btn-outline-success btn-block'])}}
                                     {{Form::close()}}</div>
+                                @if($isOwner)
                                 <div class="col-6">
                                     <a href="{{route('password.edit', Auth::id())}}" class="btn btn-outline-danger btn-block">CHANGE PASSWORD</a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

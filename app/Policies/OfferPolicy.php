@@ -44,7 +44,9 @@ class OfferPolicy
      */
     public function update(User $user, Offer $offer)
     {
-        //
+        return in_array($user->email, User::whereHas('role', function ($query) {
+            $query->where('role', 'admin');
+        })->pluck('email')->toArray());
     }
 
     /**

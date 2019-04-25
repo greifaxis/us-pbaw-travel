@@ -8,8 +8,6 @@
 
 @section('content')
     <!-- Page Content -->
-    <div class="container">
-
         <!-- Heading Row -->
         <div class="row align-items-center my-5">
             <div class="col-lg-7">
@@ -112,7 +110,7 @@
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
                             numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                     </div>
-                    <div class="card-footer ">
+                    <div class="card-footer">
                         <a href="http://us-pbaw-travel.test/login" class="btn btn-primary btn-sm">More Info</a>
                     </div>
                 </div>
@@ -121,7 +119,5 @@
 
         </div>
         <!-- /.row -->
-
-    </div>
     <!-- /.container -->
 @endsection

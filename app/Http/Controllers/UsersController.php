@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\User;
+use App\Role;
 
 class UsersController extends Controller
 {
@@ -27,7 +29,8 @@ class UsersController extends Controller
 
     public function index()
     {
-        return view('user.profile');
+        $users = User::all();
+        return view('admin.showusers',compact('users'));
     }
 
     /**
@@ -59,8 +62,10 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        return view('user.profile', compact('user'));
+        $roles = Role::all()->pluck('description','role')->toArray();
+        $user = User::find($id);
+        $isOwner = $user->id == Auth::id() ? true : false;
+        return view('user.profile', compact('user','roles','isOwner'));
     }
 
     /**
@@ -91,6 +96,7 @@ class UsersController extends Controller
             'nipnum' => 'nullable|string|max:255',
             'phone' => 'required|string|max:255,phone,' . Auth::id(),
             'address' => 'required|string|max:255',
+            'role' => 'required'
         ]);
 
         $user = Auth::user();
@@ -102,13 +108,14 @@ class UsersController extends Controller
         $user->nipnum = $request->get('nipnum');
         $user->phone = $request->get('phone');
         $user->address = $request->get('address');
+        $user->role_id = Role::where('role',$request->get('role'))->first()->id;
         $user->save();
 
-        return redirect()->route('user.show',Auth::id())->with('success', 'Profile updated!');
+        return redirect()->back()->with('success', 'Profile updated!');
 //                    Rule::unique('users')->ignore($user->id)
         /*        $user->name = $request->get('name');
                 $user->email = $request->get('email');
-                $user->password = $request->get('password');
+                $user->passwords = $request->get('password');
                 $user->firstName = $request->get('firstName');
                 $user->lastName = $request->get('lastName');
                 $user->company = $request->get('company');

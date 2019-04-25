@@ -151,7 +151,6 @@
                     scrollTop: target.offset().top
                 }, 1000);
             }
-
         });
     </script>
 @endsection
