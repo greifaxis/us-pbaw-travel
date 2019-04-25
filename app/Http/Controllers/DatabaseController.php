@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Offer;
+use App\OfferOrder;
+use App\OrderStatus;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -17,17 +19,25 @@ class DatabaseController extends Controller
     public function index()
     {
 //        $admins = Role::with('users')->where('role','admin')->get();
-        $admins = User::whereHas('role', function ($query) {
+
+/*        $admins = User::whereHas('role', function ($query) {
             $query->where('role', 'admin');
         })->pluck('email')->toArray();
+        */
+
+        $admins = OrderStatus::all();
+        $admins = $admins->max('id');
+
 //        dd(json_decode($admins));
 //        dd($admins);
 
-        $offers = Offer::count();
-        $offers1 = Offer::where('places_free','>=','1')->get();
-        $offersWithPlaces = $offers1->random();
+//        $offers1 = Offer::where('places_free','>=','1')->get();
 
-        return view('guest.database', compact('admins','offers','offersWithPlaces'));
+        $offers = Offer::all()->sum('places_max');
+        $offersWithPlaces = Offer::all()->sum('places_free');
+        $ordersSum = OfferOrder::all()->sum('quantity');
+
+        return view('guest.database', compact('admins','offers','offersWithPlaces','ordersSum'));
     }
 
     /**

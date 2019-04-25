@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class OfferOrder extends Model
 {
+    protected $table = 'offer_order';
+    public $primaryKey = 'id';
+    public $timestamps = true;
+
     protected $guarded = [
         'offer_id', 'order_id'
     ];

@@ -12,6 +12,6 @@ class OrderTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(OfferOrder::class, 100)->create();
+//        factory(OfferOrder::class, 100)->create();
     }
 }

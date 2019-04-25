@@ -49,9 +49,9 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    @forelse(json_decode($offer->images,true) as $image)
+                    @forelse(json_decode($offer->images,true) as $imageURL)
                         <div class="carousel-item {{$loop->first ? ' active' : ''}}">
-                                <img class="d-block img-fluid rounded" src="{{$image}}" alt="First slide">
+                                <img class="d-block img-fluid rounded" src="{{$imageURL}}" alt="First slide">
                         </div>
                     @empty
                     @endforelse
