@@ -33,11 +33,8 @@
                     @endif
                     </div>
                 </div>
-                {{--            <div class="card-footer">
-                                <div class="btn btn-success btn-block mt-3"><i class="fas fa-money-bill-wave mr-1"></i>BUY</div>
-                            </div>--}}
             </div>
-        </div>
+
 
 
         <div class="col-lg-9">
@@ -76,6 +73,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

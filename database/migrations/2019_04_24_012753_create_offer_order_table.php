@@ -15,9 +15,10 @@ class CreateOfferOrderTable extends Migration
     {
         Schema::create('offer_order', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('offer_id');
+            $table->unsignedBigInteger('order_id');
             $table->unsignedInteger('quantity');
+            $table->unsignedDecimal('value');
             $table->timestamps();
         });
     }

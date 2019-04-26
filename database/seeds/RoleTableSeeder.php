@@ -30,12 +30,12 @@ class RoleTableSeeder extends Seeder
 //          Eloquent seeding
         $role_user = new Role();
         $role_user->role = 'user';
-        $role_user->description = 'Użytkownik';
+        $role_user->description = 'User';
         $role_user->save();
 
         $role_admin = new Role();
         $role_admin->role = 'admin';
-        $role_admin->description = 'Administrator';
+        $role_admin->description = 'Admin';
         $role_admin->save();
     }
 }

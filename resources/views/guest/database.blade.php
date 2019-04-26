@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    <h1>Omg {{!empty($admins) ? $admins : 'PUSTE'}}</h1>
+    <h1>Omg {{!empty($order) ? $order : 'PUSTE'}}</h1>
     <p>Offers max places sum: {{$offers}}</p>
     <p>Offers free places sum:: {{$offersWithPlaces}}</p>
     <p>Offers taken places sum:: {{$offers-$offersWithPlaces}}</p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Offer;
 use App\OfferOrder;
 use App\OrderStatus;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -24,9 +25,19 @@ class DatabaseController extends Controller
             $query->where('role', 'admin');
         })->pluck('email')->toArray();
         */
+        $orders = Order::with('offers')->get();
+        $order = $orders[0];
 
-        $admins = OrderStatus::all();
-        $admins = $admins->max('id');
+//        $quantities = [];
+//        $quantities = $order->offers()->get();
+//        for($i=0;$i<$order->offers()->count();$i++){
+////            $quantities += $order->offers()->first()->pivot->quantity;
+//             array_push($quantities, $order->offers()->find($i)->pivot->quantity);
+//        }
+//        $quantities = $order->offers()->first()->pivot->quantity;
+//        return dd($order->offers()->first()->pivot->quantity);
+//        return dd($order->offers->sum('pivot.quantity'));
+//        $admins = $admins->max('id');
 
 //        dd(json_decode($admins));
 //        dd($admins);
@@ -37,7 +48,7 @@ class DatabaseController extends Controller
         $offersWithPlaces = Offer::all()->sum('places_free');
         $ordersSum = OfferOrder::all()->sum('quantity');
 
-        return view('guest.database', compact('admins','offers','offersWithPlaces','ordersSum'));
+        return view('guest.database', compact('order','offers','offersWithPlaces','ordersSum'));
     }
 
     /**

@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\OfferOrder;
 use Illuminate\Http\Request;
+use App\User;
+use App\Order;
+use App\OrderStatus;
 
 class OrdersController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +19,14 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
-        return view('user.order');
+        $users = User::whereHas('role', function ($query) {$query->where('role', 'user');})->get();
+        $admins = User::whereHas('role', function ($query) {$query->where('role', 'admin');})->get();
+        $orders = Order::where('status_id','>','1')->with('offers')->get();
+        $pivots = OfferOrder::get();
+        $statuses = OrderStatus::all()->pluck('status')->toArray();
+
+
+        return view('admin.showorders',compact('users','admins','orders','pivots','statuses'));
     }
 
     /**

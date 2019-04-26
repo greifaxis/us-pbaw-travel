@@ -8,7 +8,7 @@ use App\OrderStatus;
 use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
-    $user = User::all()->random();
+    $user = User::whereHas('role', function ($query) {$query->where('role', 'user');})->get()->random();
 
     $date_begin = $faker->dateTimeBetween($startDate = '-90 days', $endDate = 'now');
     $date_end_begin = clone $date_begin;
@@ -20,12 +20,14 @@ $factory->define(Order::class, function (Faker $faker) {
     $statusId = $faker->biasedNumberBetween($min = 1, $max = OrderStatus::all()->max('id'), $function = 'Faker\Provider\Biased::linearLow');
 
     return [
+        'billing_default' => true,
         'billing_firstName' => $user->firstName,
         'billing_lastName' => $user->lastName,
         'billing_company' => $user->company,
         'billing_nipnum' => $user->nipnum,
         'billing_phone' => $user->phone,
         'billing_address' => $user->address,
+        'is_paid' => $statusId == 2 ? $faker->boolean(75) : ($statusId == 3 || $statusId == 6 ? true : false),
         'user_id' => $user->id,
         'status_id' => $statusId,
         'user_message' => $faker->optional(0.5)->text($maxNbChars = 500, $variableNbWords = true),

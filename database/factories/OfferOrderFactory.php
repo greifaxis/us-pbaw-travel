@@ -9,7 +9,7 @@ use App\OrderStatus;
 use Faker\Generator as Faker;
 
 $factory->define(OfferOrder::class, function (Faker $faker) {
-    $val = $faker->numberBetween($min = 1, $max = 100);
+    $val = $faker->numberBetween($min = 1, $max = 200);
     if(empty(Order::find($val))){
         $order = factory(Order::class)->create();
     }
@@ -36,6 +36,7 @@ $factory->define(OfferOrder::class, function (Faker $faker) {
         'offer_id' => $offer->id,
         'order_id' => $order->id,
         'quantity' => $places,
+        'value' => empty($offer->sale) ? $places*$offer->price : $places*$offer->sale,
     ];
     }
     else{

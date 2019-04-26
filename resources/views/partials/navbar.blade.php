@@ -45,8 +45,8 @@
                             @if (Auth::user()->role()->value('role')=='admin')
                                 {{--@if (Auth::check() ? (Auth::user()->role()->value('role')=='admin') : false)--}}
                                 <a class="dropdown-item text-danger {{ Request::is('showusers') ? 'active' : '' }}" href="{{route('user.index')}}">Manage Users</a>
-                                <a class="dropdown-item text-danger {{ Request::is('showorders') ? 'active' : '' }}" href="manageorders">Manage Orders</a>
-                                <a class="dropdown-item text-danger {{ Request::is('showorders') ? 'active' : '' }}" href="manageorders">Message Inbox</a>
+                                <a class="dropdown-item text-danger {{ Request::is('showorders') ? 'active' : '' }}" href="{{route('order.index')}}">Manage Orders</a>
+                                <a class="dropdown-item text-danger {{ Request::is('showorders') ? 'active' : '' }}" href="{{route('contact.create')}}">Message Inbox</a>
                                 <div class="dropdown-divider"></div>
                             @else
                                 <a class="dropdown-item {{ Request::is('myorders') ? 'active' : '' }}" href="{{route('order.show',Auth::id())}}">My Orders</a>

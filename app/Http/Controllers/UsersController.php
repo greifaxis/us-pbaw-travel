@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Role;
+use App\Order;
 
 class UsersController extends Controller
 {
@@ -15,22 +16,13 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-
     public function index()
     {
-        $users = User::all();
-        return view('admin.showusers',compact('users'));
+        $users = User::whereHas('role', function ($query) {$query->where('role', 'user');})->get();
+        $admins = User::whereHas('role', function ($query) {$query->where('role', 'admin');})->get();
+        $orders = Order::with('offers')->get();
+
+        return view('admin.showusers',compact('users','admins','orders'));
     }
 
     /**
@@ -89,17 +81,17 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'email' => 'required|email|unique:users,email,' . Auth::id(),
-            'firstName' => 'required|string|max:255,firstName,' . Auth::id(),
-            'lastName' => 'required|string|max:255,lastName,' . Auth::id(),
+            'email' => 'required|email|unique:users,email,' . $id,
+            'firstName' => 'required|string|max:255,firstName,' . $id,
+            'lastName' => 'required|string|max:255,lastName,' . $id,
             'company' => 'nullable|string|max:255',
             'nipnum' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:255,phone,' . Auth::id(),
+            'phone' => 'required|string|max:255,phone,' . $id,
             'address' => 'required|string|max:255',
             'role' => 'required'
         ]);
 
-        $user = Auth::user();
+        $user = User::find($id);
 
         $user->email = $request->get('email');
         $user->firstName = $request->get('firstName');
@@ -133,9 +125,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        Auth::logout();
         $user = User::find($id);
         $user->delete();
 
-        return redirect('/user')->with('success', 'Profile updated!');
+        return redirect('/');
     }
 }

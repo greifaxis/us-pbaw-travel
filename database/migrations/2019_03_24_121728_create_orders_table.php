@@ -17,8 +17,10 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('status_id');
+            $table->boolean('is_paid')->default(false);
             $table->text('user_message')->nullable();
             $table->string('admin_answer')->nullable();
+            $table->boolean('billing_default')->nullable();
             $table->string('billing_firstName')->nullable();
             $table->string('billing_lastName')->nullable();
             $table->string('billing_company')->nullable();

@@ -5,6 +5,7 @@
 // Variables
 @import 'variables';
 
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -27,4 +28,12 @@
   position: fixed !important;
   bottom: 0;
   right: 0;
+}
+
+.dataTable th .cell-truncate, .dataTable td.cell-truncate{
+  max-width: 200px;
+  min-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

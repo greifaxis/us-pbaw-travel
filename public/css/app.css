@@ -16439,3 +16439,12 @@ readers do not read off random characters that represent icons */
   right: 0;
 }
 
+.dataTable th .cell-truncate,
+.dataTable td.cell-truncate {
+  max-width: 200px;
+  min-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+

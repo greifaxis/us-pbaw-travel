@@ -11,7 +11,7 @@
         <div class="col-lg-3">
             <div class="card h-100">
                 <div class="card-header d-flex flex-column align-items-center justify-content-center h3">
-                    <i class="fas fa-compass fa-5x d-flex flex-row"></i>
+                    <i class="fas fa-compass fa-5x d-flex flex-row text-success"></i>
                 </div>
 
                 <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Address</div>
