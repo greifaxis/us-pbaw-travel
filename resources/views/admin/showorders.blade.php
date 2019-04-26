@@ -80,7 +80,7 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                <a href="{{route('order.show', $order->id)}}" class="btn btn-outline-dark my-0 py-0 px-1">SHOW</a>
+                                <a href="{{route('order.edit', $order->id)}}" class="btn btn-outline-dark my-0 py-0 px-1">SHOW</a>
                             </td>
                         </tr>
                     @empty

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Order;
 use App\OrderStatus;
+use App\Offer;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrdersController extends Controller
 {
@@ -36,7 +39,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+        $order = Order::find(Auth::id());
+        return view('user.order',compact('order'));
     }
 
     /**
@@ -58,7 +62,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -69,7 +73,10 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        $offers = $order->offers()->get();
+        $statuses= OrderStatus::all()->pluck('status')->toArray();
+        return view('admin.editorder',compact('order','offers','statuses'));
     }
 
     /**
