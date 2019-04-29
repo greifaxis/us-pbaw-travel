@@ -129,6 +129,8 @@
         @endcannot
 
         <div class="row">
+            @can('create', App\Offer::class)
+
             @forelse($offersFull as $offer)
                 <div class="col-lg-6 col-md-12 mb-4" id="offer-card-full-{{$offer->id}}">
                     <div class="card h-100">
@@ -176,6 +178,7 @@
                     </div>
                 </div>
             @endforelse
+            @endcan
             @forelse($offers as $offer)
                 <div class="col-lg-6 col-md-12 mb-4" id="offer-card-{{$offer->id}}">
                     <div class="card h-100">

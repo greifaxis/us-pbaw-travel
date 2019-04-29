@@ -21,6 +21,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Orders</th>
+                        <th>Total</th>
                         <th>Options</th>
                         <th class="d-none">Address</th>
                         <th class="d-none">Phone</th>
@@ -33,6 +34,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Orders: {{$orders->count()}}</th>
+                        <th>Total</th>
                         <th>Options</th>
                         <th class="d-none">Address</th>
                         <th class="d-none">Phone</th>
@@ -46,10 +48,17 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->firstName.' '.$user->lastName}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->orders()->count()}}</td>
+                        <td class="text-right">{{$user->orders()->count()}}</td>
                         <td class="text-right">
-                            <a href="{{route('user.show', $user->id)}}" class="btn btn-outline-dark my-0 py-0 px-1">EDIT</a>
-                            <a href="{{route('user.show', $user->id)}}" class="btn btn-outline-dark my-0 py-0 px-1">ORDERS</a>
+                            @if(!empty($orders->firstWhere('user_id',$user->id)))
+                                {{$orders->firstWhere('user_id',$user->id)->offers->sum('pivot.value') }}
+                                @else
+                                0
+                            @endif
+                        </td>
+                        {{--<td>{{optional($orders->where('user_id',$user->id)->first()->offers->sum('pivot.value')) }}</td>--}}
+                        <td>
+                                <div class="col m-0 p-0 mr-2"><a href="{{route('user.show', $user->id)}}" class="btn btn-primary btn-block my-0 py-0 px-1">EDIT</a></div>
                         </td>
                         <td class="d-none">{{$user->address}}</td>
                         <td class="d-none">{{$user->phone}}</td>

@@ -6,6 +6,25 @@
 @endpush
 
 @section('content')
+
+    @if(session('success'))
+        <div class="alert alert-success p-2 p-sm-1 my-0">
+            {{session('success')}}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger p-2 p-sm-1 my-0">
+            {{session('error')}}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger p-2 p-sm-1 my-0">
+            @foreach ($errors->all() as $error)
+                <div class="my-1">{{ $error }}</div>
+            @endforeach
+        </div>
+    @endif
+
 <div class="row mt-4">
 
     <div class="col-lg-3 mb-4">
@@ -41,8 +60,15 @@
                 </div>
             @else
             <div class="card-footer">
-                <input type="number" id="changedInput" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary"/>
-                <div class="btn btn-success btn-block mt-3"><i class="fas fa-money-bill-wave mr-1"></i>BUY</div>
+                {{Form::open(['action'=> ['OfferOrdersController@update',$offer->id],'method' => 'POST'])}}
+                @method('PUT')
+                @csrf
+                <div class="form-label-group">
+                    <label for="quantity" class="d-none">Quantity</label>
+                    <input type="number" id="quantity" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary" required/>
+                </div>
+                {{Form::submit('ADD TO BASKET',['class'=>'btn btn-success btn-block mt-3'])}}
+                {{Form::close()}}
             </div>
             @endcan
 
@@ -144,16 +170,16 @@
     </div>
 </div>
 
-<script src="./src/bootstrap-input-spinner.js"></script>
+{{--<script src="./src/bootstrap-input-spinner.js"></script>--}}
 <script>
-    $("input[type='number']").inputSpinner();
+    // $("input[type='number']").inputSpinner();
 </script>
 <script>
-    var $changedInput = $("#changedInput")
-    var $valueOnInput = $("#valueOnInput")
-    $changedInput.on("input", function (event) {
-        $valueOnInput.html({{$offer->places_free}}-$changedInput.val())
-    })
+    {{--var $changedInput = $("#inputQuantity")--}}
+    {{--var $valueOnInput = $("#valueOnInput")--}}
+    {{--$changedInput.on("input", function (event) {--}}
+        {{--$valueOnInput.html({{$offer->places_free}}-$changedInput.val())--}}
+    {{--})--}}
 
     function deleteData(id)
     {

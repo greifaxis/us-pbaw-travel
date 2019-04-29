@@ -62,7 +62,9 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-
+        $order = Order::find($id);
+        $offers = $order->offers()->get();
+        return view('user.order',compact('order','offers'));
     }
 
     /**

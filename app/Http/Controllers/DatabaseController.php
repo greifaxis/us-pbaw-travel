@@ -25,9 +25,12 @@ class DatabaseController extends Controller
             $query->where('role', 'admin');
         })->pluck('email')->toArray();
         */
-        $orders = Order::with('offers')->get();
-        $order = $orders[0];
+        $user = User::find(4);
+//        $order = Order::where('user_id',$user->id)->where('status_id','1')->first()->id;
+        $order = OrderStatus::where('status','like','Basket')->first()->id;
 
+//            ;
+        dd($order);
 //        $quantities = [];
 //        $quantities = $order->offers()->get();
 //        for($i=0;$i<$order->offers()->count();$i++){
@@ -40,7 +43,7 @@ class DatabaseController extends Controller
 //        $admins = $admins->max('id');
 
 //        dd(json_decode($admins));
-//        dd($admins);
+//        dd($order);
 
 //        $offers1 = Offer::where('places_free','>=','1')->get();
 

@@ -32,7 +32,7 @@
                         @csrf
                         <div class="form-group">
                             {{Form::label('role','CHANGE STATUS',['class'=>'col-form-label col-12'])}}
-                            {{Form::select("role",$statuses,$order->status()->value('status'),["class" => "form-control col-12"])}}
+                            {{Form::select("role",$statuses,$order->status()->value('id')-1,["class" => "form-control col-12"])}}
                         </div>
                         {{Form::submit('SUBMIT',['class'=>'btn btn-outline-success btn-block'])}}
                         {{Form::close()}}

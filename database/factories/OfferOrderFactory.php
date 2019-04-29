@@ -18,6 +18,8 @@ $factory->define(OfferOrder::class, function (Faker $faker) {
     }
     $offersWithPlaces = Offer::where('places_free','>=','1')->get();
 
+    
+
     if($offersWithPlaces->count()>0)
     {
             do
