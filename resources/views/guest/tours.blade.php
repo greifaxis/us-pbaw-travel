@@ -162,7 +162,6 @@
                                         <span class="h6 my-auto" style="text-decoration: line-through;">{{$offer->price}} zł</span><span class="h6 my-auto ml-1 text-danger"> {{$offer->sale}} zł</span><span class="small my-auto ml-1 px-1 text-white bg-danger">-{{number_format(($offer->price-$offer->sale)*100/$offer->price,0)}}%</span>
                                     @endif
                                 </div>
-                                {{--<div class="col"></div>--}}
                                 <div class="col-5 text-right">
                                     <a href="{{route('tours.show',$offer->id)}}" class="btn btn-outline-dark"><i class="fas fa-info-circle mr-1"></i>DETAILS</a>
                                 </div>

@@ -60,15 +60,15 @@
                 </div>
             @else
             <div class="card-footer">
-                {{Form::open(['action'=> ['OfferOrdersController@update',$offer->id],'method' => 'POST'])}}
+{{--                {{Form::open(['action'=> ['OfferOrdersController@update',$offer->id],'method' => 'POST'])}}
                 @method('PUT')
-                @csrf
+                @csrf--}}
                 <div class="form-label-group">
                     <label for="quantity" class="d-none">Quantity</label>
                     <input type="number" id="quantity" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary" required/>
                 </div>
                 {{Form::submit('ADD TO BASKET',['class'=>'btn btn-success btn-block mt-3'])}}
-                {{Form::close()}}
+                {{--{{Form::close()}}--}}
             </div>
             @endcan
 

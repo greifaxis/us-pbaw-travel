@@ -11,7 +11,6 @@
         <div class="row justify-content-center">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
-                    {{--<div class="card-header text-center">{{ __('Login') }}</div>--}}
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ __('Login') }}</h5>
 
@@ -22,24 +21,11 @@
                                 <input id="email" type="email"
                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email address" required autofocus>
                                 <label for="email">{{ __('E-Mail Address') }}</label>
-
-                                {{--@if ($errors->has('email'))--}}
-                                    {{--<span class="invalid-feedback text-center" role="alert">--}}
-                                        {{--<strong>{{ $errors->first('email') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
                             </div>
 
                             <div class="form-label-group">
-                                {{--<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>--}}
                                 <input id="password" type="password" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
                                 <label for="password">{{ __('Password') }}</label>
-
-                                {{--@if ($errors->has('password'))--}}
-                                    {{--<span class="invalid-feedback text-center" role="alert">--}}
-                                        {{--<strong>{{ $errors->first('password') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
                             </div>
 
                             <div class="custom-control custom-checkbox mb-3 pl-5">

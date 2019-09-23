@@ -31,8 +31,8 @@
                         @method('PATCH')
                         @csrf
                         <div class="form-group">
-                            {{Form::label('role','CHANGE STATUS',['class'=>'col-form-label col-12'])}}
-                            {{Form::select("role",$statuses,$order->status()->value('id')-1,["class" => "form-control col-12"])}}
+                            {{Form::label('statusIdDropdown','CHANGE STATUS',['class'=>'col-form-label col-12'])}}
+                            {{Form::select('statusIdDropdown',$statuses,$order->status()->value('id')-2,["class" => "form-control col-12"])}}
                         </div>
                         {{Form::submit('SUBMIT',['class'=>'btn btn-outline-success btn-block'])}}
                         {{Form::close()}}
@@ -66,11 +66,11 @@
                             <div class="row">
                                 <div class="col-3 m-0 p-0 pl-4 h3"><i class="far fa-list-alt mx-2"></i>Contents</div>
                                 <div class="col m-0 p-0 text-right h5">
-                                    <span class="badge  mx-2 {{($order->status()->value('status') == $statuses[1]) ? "badge-secondary" : "badge-light border"}}">{{$statuses[1]}}</span>
-                                    <span class="badge  mx-2 {{$order->status()->value('status') == $statuses[2] ? "badge-success" : "badge-light border"}}">{{$statuses[2]}}</span>
-                                    <span class="badge mx-2 {{$order->status()->value('status') == $statuses[3] ? "badge-warning" : "badge-light border"}}">{{$statuses[3]}}</span>
-                                    <span class="badge  mx-2 {{$order->status()->value('status') == $statuses[4] ? "badge-danger" : "badge-light border"}}">{{$statuses[4]}}</span>
-                                    <span class="badge mx-2 {{$order->status()->value('status') == $statuses[5] ? "badge-dark" : "badge-light border"}}">{{$statuses[5]}}</span>
+                                    <span class="badge  mx-2 {{($order->status()->value('status') == $statuses[0]) ? "badge-secondary" : "badge-light border"}}">{{$statuses[0]}}</span>
+                                    <span class="badge  mx-2 {{$order->status()->value('status') == $statuses[1] ? "badge-success" : "badge-light border"}}">{{$statuses[1]}}</span>
+                                    <span class="badge mx-2 {{$order->status()->value('status') == $statuses[2] ? "badge-warning" : "badge-light border"}}">{{$statuses[2]}}</span>
+                                    <span class="badge  mx-2 {{$order->status()->value('status') == $statuses[3] ? "badge-danger" : "badge-light border"}}">{{$statuses[3]}}</span>
+                                    <span class="badge mx-2 {{$order->status()->value('status') == $statuses[4] ? "badge-dark" : "badge-light border"}}">{{$statuses[4]}}</span>
                                 </div>
                             </div>
                         </div>

@@ -8,7 +8,9 @@ use App\OrderStatus;
 use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
-    $user = User::whereHas('role', function ($query) {$query->where('role', 'user');})->get()->random();
+    $user = User::whereHas('role', function ($query) {
+        $query->where('role', 'user');
+    })->get()->random();
 
     $date_begin = $faker->dateTimeBetween($startDate = '-90 days', $endDate = 'now');
     $date_end_begin = clone $date_begin;
@@ -31,8 +33,8 @@ $factory->define(Order::class, function (Faker $faker) {
         'user_id' => $user->id,
         'status_id' => $statusId,
         'user_message' => $faker->optional(0.5)->text($maxNbChars = 500, $variableNbWords = true),
-        'admin_answer' => $statusId >=3 ? $faker->optional(0.5)->text($maxNbChars = 255, $variableNbWords = true) : null,
-        'placed_at' => $statusId >=2 ? $date_begin : null,
-        'finished_at' =>  $statusId >=3 ? $date_end : null,
+        'admin_answer' => $statusId >= 3 ? $faker->optional(0.5)->text($maxNbChars = 255, $variableNbWords = true) : null,
+        'placed_at' => $statusId >= 2 ? $date_begin : null,
+        'finished_at' => $statusId >= 3 ? $date_end : null,
     ];
 });

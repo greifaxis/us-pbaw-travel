@@ -7,29 +7,14 @@
 @endpush
 
 @section('content')
-    <!-- Page Content -->
-        <!-- Heading Row -->
-        <div class="row align-items-center my-5">
-            <div class="col-lg-7">
-                <img class="img-fluid rounded mb-4 mb-lg-0" src="https://i.imgur.com/6afSPcc.png" alt="Globe">
-            </div>
-            <!-- /.col-lg-8 -->
-            <div class="col-lg-5">
-                <h1 class="font-weight-light">US Travel</h1>
-                <p>“The gladdest moment in human life is a departure into unknown lands.” – Sir Richard Burton</p>
-                <a class="btn btn-primary" href="http://us-pbaw-travel.test/tours">Zarezerwuj teraz!</a>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
 
-        <div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide my-5" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner rounded" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 <div class="carousel-item active " style="background-image: url('https://i.imgur.com/vg3dHSe.png')">
                     <div class="carousel-caption d-none d-md-block">
@@ -63,6 +48,36 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
+    <div class="row align-items-center my-5">
+        <div class="col-lg-7">
+            <img class="img-fluid rounded mb-4 mb-lg-0" src="https://i.imgur.com/6afSPcc.png" alt="Globe">
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">US Travel</h1>
+            <p>“The gladdest moment in human life is a departure into unknown lands.” – Sir Richard Burton</p>
+            <a class="btn btn-primary" href="http://us-pbaw-travel.test/tours">Zarezerwuj teraz!</a>
+        </div>
+        <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+
+
+    <div class="row align-items-center my-5">
+
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">US Travel</h1>
+            <p>“The gladdest moment in human life is a departure into unknown lands.” – Sir Richard Burton</p>
+            <a class="btn btn-primary" href="http://us-pbaw-travel.test/tours">Zarezerwuj teraz!</a>
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-lg-7">
+            <img class="img-fluid rounded mb-4 mb-lg-0" src="https://i.imgur.com/6afSPcc.png" alt="Globe">
+        </div>
+    </div>
+    <!-- /.row -->
 
 
         <!-- Content Row -->

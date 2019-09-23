@@ -77,7 +77,7 @@ class OrdersController extends Controller
     {
         $order = Order::find($id);
         $offers = $order->offers()->get();
-        $statuses= OrderStatus::all()->pluck('status')->toArray();
+        $statuses= OrderStatus::where('id','>=',2)->pluck('status')->toArray();
         return view('admin.editorder',compact('order','offers','statuses'));
     }
 
@@ -90,7 +90,17 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'statusIdDropdown' => 'required',
+        ]);
+        $order = Order::find($id);
+        $order->status_id = $request->input('statusIdDropdown')+2;
+        $order->save();
+
+        $statuses= OrderStatus::where('id','>=',2)->pluck('status')->toArray();
+
+        $offers = $order->offers()->get();
+        return view('admin.editorder',compact('order','offers','statuses'));
     }
 
     /**

@@ -56,6 +56,7 @@
                                         <th>Value</th>
                                         <th>Places</th>
                                         <th>Cost</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -65,6 +66,7 @@
                                         <th></th>
                                         <th class="text-right">{{$order->offers->sum('pivot.quantity')}}</th>
                                         <th class="text-right">{{$order->offers->sum('pivot.value')}}</th>
+                                        <th class="text-right"></th>
                                     </tr>
                                     <tbody>
                                     @forelse($offers as $offer)
@@ -74,6 +76,19 @@
                                             <td class="text-right">{{empty($offer->sale) ? $offer->price : $offer->sale}}</td>
                                             <td class="text-right">{{$offer->pivot->quantity}}</td>
                                             <td class="text-right">{{empty($offer->sale) ? $offer->price*$offer->pivot->quantity : $offer->sale*$offer->pivot->quantity}}</td>
+                                            {{--<td class="text-right">--}}
+                                                {{--@if($offer->status()->value('id') == 2)--}}
+                                                    {{--<span class="badge badge-secondary">{{$order->status()->value('status')}}</span>--}}
+                                                {{--@elseif($order->status()->value('id') == 3)--}}
+                                                    {{--<span class="badge badge-success">{{$order->status()->value('status')}}</span>--}}
+                                                {{--@elseif($order->status()->value('id') == 4)--}}
+                                                    {{--<span class="badge badge-warning">{{$order->status()->value('status')}}</span>--}}
+                                                {{--@elseif($order->status()->value('id') == 5)--}}
+                                                    {{--<span class="badge badge-danger">{{$order->status()->value('status')}}</span>--}}
+                                                {{--@else--}}
+                                                    {{--<span class="badge badge-dark">{{$order->status()->value('status')}}</span>--}}
+                                                {{--@endif--}}
+                                            {{--</td>--}}
                                         </tr>
                                     </tbody>
                                     @empty
