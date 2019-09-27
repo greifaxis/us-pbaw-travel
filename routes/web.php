@@ -24,7 +24,6 @@ Route::resource('/tours', 'OffersController');
 Route::resource('/order', 'OrdersController')->middleware('auth');
 Route::resource('/user', 'UsersController')->middleware('auth');
 Route::resource('/password', 'PasswordsController')->middleware('auth');
-Route::resource('/order', 'OrdersController')->middleware('auth');
 
 //ADMIN
 //Route::resource('/showusers', 'ProfilesController')->middleware('admin');

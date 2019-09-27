@@ -13,11 +13,13 @@
                 </div>
 
                 @can('create', App\Hotel::class)
-                    <div class="row my-2">
-                        <div class="col-sm-8 offset-2">
-                            <a href="{{route('hotels.create')}}" class="btn btn-outline-dark btn-block align-content-center p-2"><i class="fas fa-plus-square fa-lg"></i> ADD HOTEL</a>
+                    @if (Auth::user()->role()->value('role')=='admin')
+                        <div class="row my-2">
+                            <div class="col-sm-8 offset-2">
+                                <a href="{{route('hotels.create')}}" class="btn btn-outline-dark btn-block align-content-center p-2"><i class="fas fa-plus-square fa-lg"></i> ADD HOTEL</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endcan
                 <div class="row mt-3">
                 <div class="list-group col-sm-12">

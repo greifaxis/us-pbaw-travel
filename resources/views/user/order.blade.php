@@ -56,7 +56,6 @@
                                         <th>Value</th>
                                         <th>Places</th>
                                         <th>Cost</th>
-                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -66,7 +65,6 @@
                                         <th></th>
                                         <th class="text-right">{{$order->offers->sum('pivot.quantity')}}</th>
                                         <th class="text-right">{{$order->offers->sum('pivot.value')}}</th>
-                                        <th class="text-right"></th>
                                     </tr>
                                     <tbody>
                                     @forelse($offers as $offer)

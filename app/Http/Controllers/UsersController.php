@@ -103,17 +103,6 @@ class UsersController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated!');
-//                    Rule::unique('users')->ignore($user->id)
-        /*        $user->name = $request->get('name');
-                $user->email = $request->get('email');
-                $user->passwords = $request->get('password');
-                $user->firstName = $request->get('firstName');
-                $user->lastName = $request->get('lastName');
-                $user->company = $request->get('company');
-                $user->nipnum = $request->get('nipnum');
-                $user->phone = $request->get('phone');
-                $user->address = $request->get('address');
-                $user->save();*/
     }
 
     /**

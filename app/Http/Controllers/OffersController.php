@@ -79,14 +79,12 @@ class OffersController extends Controller
             $request->input('image3'),
             $request->input('image4'),
             $request->input('image5'),
-
         ],JSON_FORCE_OBJECT);
         //$offer->images = $request->input('images');
         $offer->hotel_id = $request->input('hotel_id');
         $offer->save();
 
         return redirect()->back()->with('success', 'Offer Added!');
-
     }
 
     /**
@@ -157,7 +155,6 @@ class OffersController extends Controller
             $request->input('image3'),
             $request->input('image4'),
             $request->input('image5'),
-
         ],JSON_FORCE_OBJECT);
         //$offer->images = $request->input('images');
         $offer->hotel_id = $request->input('hotel_id');

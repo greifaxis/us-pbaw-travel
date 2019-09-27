@@ -44,15 +44,15 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @if (Auth::user()->role()->value('role')=='admin')
                                 {{--@if (Auth::check() ? (Auth::user()->role()->value('role')=='admin') : false)--}}
-                                <a class="dropdown-item text-danger {{ Request::is('showusers') ? 'active' : '' }}" href="{{route('user.index')}}">Manage Users</a>
-                                <a class="dropdown-item text-danger {{ Request::is('showorders') ? 'active' : '' }}" href="{{route('order.index')}}">Manage Orders</a>
-                                <a class="dropdown-item text-danger {{ Request::is('showorders') ? 'active' : '' }}" href="{{route('contact.create')}}">Message Inbox</a>
+                                <a class="dropdown-item text-danger {{ Request::is('user') ? 'active' : '' }}" href="{{route('user.index')}}">Manage Users</a>
+                                <a class="dropdown-item text-danger {{ Request::is('order') ? 'active' : '' }}" href="{{route('order.index')}}">Manage Orders</a>
+                                <a class="dropdown-item text-danger {{ Request::is('contact/create') ? 'active' : '' }}" href="{{route('contact.create')}}">Message Inbox</a>
                                 <div class="dropdown-divider"></div>
                             @else
-                                <a class="dropdown-item {{ Request::is('myorders') ? 'active' : '' }}" href="{{route('order.show',Auth::id())}}">My Basket</a>
-                                <a class="dropdown-item {{ Request::is('myorders') ? 'active' : '' }}" href="{{route('order.show',Auth::id())}}">My Orders</a>
+                                {{--<a class="dropdown-item {{ Request::is('myorders') ? 'active' : '' }}" href="{{route('order.show',Auth::id())}}">My Basket</a>--}}
+                                <a class="dropdown-item {{ Request::is('order') ? 'active' : '' }}" href="{{route('order.index')}}">My Orders</a>
                             @endif
-                                <a class="dropdown-item {{Request::is('myprofile') ? 'active' : '' }}" href="{{route('user.show',Auth::id())}}">My Profile</a>
+                                <a class="dropdown-item {{Request::is('user*') ? 'active' : '' }}" href="{{route('user.show',Auth::id())}}">My Profile</a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

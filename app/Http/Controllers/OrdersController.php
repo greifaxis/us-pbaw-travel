@@ -22,14 +22,25 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $users = User::whereHas('role', function ($query) {$query->where('role', 'user');})->get();
-        $admins = User::whereHas('role', function ($query) {$query->where('role', 'admin');})->get();
-        $orders = Order::where('status_id','>','1')->with('offers')->get();
-        $pivots = OfferOrder::get();
-        $statuses = OrderStatus::all()->pluck('status')->toArray();
+        if(Auth::user()->role()->value('role')=='admin') {
+            $users = User::whereHas('role', function ($query) {
+                $query->where('role', 'user');
+            })->get();
+            $admins = User::whereHas('role', function ($query) {
+                $query->where('role', 'admin');
+            })->get();
+            $orders = Order::where('status_id', '>', '1')->with('offers')->get();
+            $pivots = OfferOrder::get();
+            $statuses = OrderStatus::all()->pluck('status')->toArray();
 
-
-        return view('admin.showorders',compact('users','admins','orders','pivots','statuses'));
+            return view('admin.showorders', compact('users', 'admins', 'orders', 'pivots', 'statuses'));
+        }
+        else{
+            $orders = Order::where('user_id',Auth::id())->where('status_id', '>', '1')->with('offers')->get();
+            $pivots = OfferOrder::whereIn('order_id',$orders->pluck('id')->toArray())->get();
+            $statuses = OrderStatus::all()->pluck('status')->toArray();
+        return view('user.orders', compact('orders', 'pivots', 'statuses'));
+        }
     }
 
     /**
