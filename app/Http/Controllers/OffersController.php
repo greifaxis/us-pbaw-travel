@@ -228,7 +228,7 @@ class OffersController extends Controller
         $offer = Offer::find($id);
         $offer->delete();
 
-        return redirect('/tours')->with('success', 'Stock has been deleted Successfully');
+        return redirect('/tours')->with('success', 'Tour has been deleted successfully');
     }
 
 }

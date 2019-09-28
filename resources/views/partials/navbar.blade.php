@@ -13,12 +13,9 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link {{ Request::is('tours') ? 'active' : '' }}" href="{{route('tours.index')}}">Tours</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::is('hotels') ? 'active' : '' }}" href="{{route('hotels.index')}}">Hotels</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::is('database') ? 'active' : '' }}" href="/database">Database</a></li>
-
-                {{--@if (Auth::check() ? (Auth::user()->role()->value('role')=='admin') : false)--}}
                 @if (Auth::check() && (Auth::user()->role()->value('role')=='admin'))
                         @else
-                    <li class="nav-item"><a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="{{route('contact.index')}}">Contact Us</a></li>
                 @endif
             </ul>
             <!-- Right Side Of Navbar -->
@@ -43,7 +40,6 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             @if (Auth::user()->role()->value('role')=='admin')
-                                {{--@if (Auth::check() ? (Auth::user()->role()->value('role')=='admin') : false)--}}
                                 <a class="dropdown-item text-danger {{ Request::is('user') ? 'active' : '' }}" href="{{route('user.index')}}">Manage Users</a>
                                 <a class="dropdown-item text-danger {{ Request::is('order') ? 'active' : '' }}" href="{{route('order.index')}}">Manage Orders</a>
                                 <a class="dropdown-item text-danger {{ Request::is('contact/create') ? 'active' : '' }}" href="{{route('contact.create')}}">Message Inbox</a>

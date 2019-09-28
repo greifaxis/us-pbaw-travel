@@ -106,6 +106,10 @@ class OrdersController extends Controller
         ]);
         $order = Order::find($id);
         $order->status_id = $request->input('statusIdDropdown')+2;
+        if($order->status_id >= 3){
+            $order->finished_at = date('Y-m-d H:i:s');
+        }
+
         $order->save();
 
         $statuses= OrderStatus::where('id','>=',2)->pluck('status')->toArray();

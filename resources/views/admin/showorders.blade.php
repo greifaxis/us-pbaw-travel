@@ -66,7 +66,7 @@
                             <td class="text-right">{{$order->offers->sum('pivot.value')}}</td>
                             <td class="text-right">{{!empty($order->placed_at) ? $order->placed_at->format('d.m.Y') : null}}</td>
                             <td class="text-right">{{!empty($order->finished_at)  ? $order->finished_at->format('d.m.Y') : null}}</td>
-                            <td class="text-right">
+                            <td class="text-left">
                                 @if($order->status()->value('id') == 2)
                                     <span class="badge badge-secondary">{{$order->status()->value('status')}}</span>
                                 @elseif($order->status()->value('id') == 3)
