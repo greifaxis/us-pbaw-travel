@@ -17,6 +17,6 @@ class OfferOrder extends Model
     ];
 
     protected $fillable = [
-        'places'
+        'quantity','value'
     ];
 }

@@ -68,7 +68,7 @@
                     </tfoot>
                     <tbody>
                     @forelse($orders as $order)
-                        <tr id="orderRowId{{$order->id}}">
+                        <tr id="orderRowId{{$order->id}}" class="orderTableRow" onclick="goToOrder({{$order->id}})">
                             <td>{{$order->id}}</td>
                             <td class="text-center">
                                 <i class="fas fa-address-book {{ $order->billing_default ? 'text-success' : 'text-danger'}}"></i>
@@ -99,7 +99,9 @@
                             </td>--}}
                         </tr>
                     @empty
-                        <p>Error loading fields!</p>
+                        <tr>
+                            <td colspan="8" class="text-center text-secondary">No orders.</td>
+                        </tr>
                     @endforelse
                     </tbody>
                 </table>
@@ -107,5 +109,22 @@
         </div>
 
     </div>
+
+    <script>
+        $(".orderTableRow").hover(function(){
+            $(this).addClass("text-secondary").css("background-color", "#F5F5F5");
+        }, function(){
+            $(this).removeClass("text-secondary").css("background-color", "#f8fafc");
+        });
+
+        function goToOrder(id)
+        {
+            var id = id;
+            var url = '{{ route("order.show", ":id") }}';
+            url = url.replace(':id', id);
+            window.location.href = url
+        }
+
+    </script>
 
 @endsection

@@ -27,6 +27,11 @@ class Offer extends Model
         return $this->belongsToMany(Order::class)->withPivot('quantity','value')->withTimestamps();
     }
 
+    public function baskets()
+    {
+        return $this->hasMany(Basket::class);
+    }
+
     public function hotel()
     {
         return $this->belongsTo(Hotel::class);

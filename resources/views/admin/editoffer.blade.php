@@ -88,6 +88,7 @@
                         {{Form::label('hotel_id','Hotel ID',['class'=>'col-sm-3 col-form-label'])}}
                         {{Form::text('hotel_id',$offer->hotel_id,['class'=>'form-control col-sm-9','placeholder'=>'Hotel ID'])}}
                     </div>
+                    {{Form::hidden('isBasket',false,['required'])}}
                     {{Form::submit('Submit',['class'=>'ml-3 btn btn-secondary'])}}
                     {{Form::close()}}
                 </div>

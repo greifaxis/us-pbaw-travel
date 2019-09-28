@@ -7,25 +7,29 @@
 
 @section('content')
 
-    @if(session('success'))
-        <div class="alert alert-success p-2 p-sm-1 my-0">
-            {{session('success')}}
-        </div>
-    @endif
-    @if (session('error'))
-        <div class="alert alert-danger p-2 p-sm-1 my-0">
-            {{session('error')}}
-        </div>
-    @endif
-    @if ($errors->any())
-        <div class="alert alert-danger p-2 p-sm-1 my-0">
-            @foreach ($errors->all() as $error)
-                <div class="my-1">{{ $error }}</div>
-            @endforeach
-        </div>
-    @endif
+<div class="row mt-2">
+    <div class="col mb-2">
+        @if(session('success'))
+            <div class="alert alert-success p-2 p-sm-1 my-0">
+                {{session('success')}}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger p-2 p-sm-1 my-0">
+                {{session('error')}}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger p-2 p-sm-1 my-0">
+                @foreach ($errors->all() as $error)
+                    <div class="my-1">{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+</div>
 
-<div class="row mt-4">
+<div class="row mt-0">
 
     <div class="col-lg-3 mb-4">
 
@@ -60,15 +64,18 @@
                 </div>
             @else
             <div class="card-footer">
-{{--                {{Form::open(['action'=> ['OfferOrdersController@update',$offer->id],'method' => 'POST'])}}
-                @method('PUT')
-                @csrf--}}
-                <div class="form-label-group">
+                {{Form::open(['action'=> ['OffersController@update',$offer->id],'method' => 'POST'])}}
+                @method ('PATCH')
+                @csrf
+           {{--     <div class="form-label-group">
                     <label for="quantity" class="d-none">Quantity</label>
-                    <input type="number" id="quantity" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary" required/>
-                </div>
+                    <input type="number" id="quantity" value="0" min="0" max="{{$offer->places_free}}" step="1" class="border-secondary form-control-sm" required/>
+                </div>--}}
+
+                {{Form::number('quantity',0,['class'=>'border-secondary form-control-sm','id'=>'quantity','min'=>0,'max'=>$offer->places_free,'step'=>1,'required'])}}
+                {{Form::hidden('isBasket',true,['required'])}}
                 {{Form::submit('ADD TO BASKET',['class'=>'btn btn-success btn-block mt-3'])}}
-                {{--{{Form::close()}}--}}
+                {{Form::close()}}
             </div>
             @endcan
 
@@ -170,16 +177,16 @@
     </div>
 </div>
 
-{{--<script src="./src/bootstrap-input-spinner.js"></script>--}}
+<script src="{{ URL::asset('js/bootstrap-input-spinner.js') }}"></script>
+
 <script>
-    // $("input[type='number']").inputSpinner();
-</script>
-<script>
-    {{--var $changedInput = $("#inputQuantity")--}}
-    {{--var $valueOnInput = $("#valueOnInput")--}}
-    {{--$changedInput.on("input", function (event) {--}}
-        {{--$valueOnInput.html({{$offer->places_free}}-$changedInput.val())--}}
-    {{--})--}}
+    $("input[type='number']").inputSpinner();
+
+    var $changedInput = $("#quantity");
+    var $valueOnInput = $("#valueOnInput");
+    $changedInput.on("input", function (event) {
+        $valueOnInput.html({{$offer->places_free}}-$changedInput.val())
+    })
 
     function deleteData(id)
     {

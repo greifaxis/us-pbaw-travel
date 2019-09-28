@@ -15,7 +15,7 @@ Auth::routes();
 //GUEST
 Route::get('/', 'HomeController@index');
 Route::get('/database', 'DatabaseController@index');
-Route::patch('');
+Route::get('/basket','BasketsController@index')->name('basket.index')->middleware('auth');
 
 //AUTH
 Route::resource('/hotels', 'HotelsController');

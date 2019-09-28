@@ -49,7 +49,7 @@
                                 <a class="dropdown-item text-danger {{ Request::is('contact/create') ? 'active' : '' }}" href="{{route('contact.create')}}">Message Inbox</a>
                                 <div class="dropdown-divider"></div>
                             @else
-                                {{--<a class="dropdown-item {{ Request::is('myorders') ? 'active' : '' }}" href="{{route('order.show',Auth::id())}}">My Basket</a>--}}
+                                <a class="dropdown-item {{ Request::is('basket') ? 'active' : '' }}" href="{{route('basket.index')}}">My Basket</a>
                                 <a class="dropdown-item {{ Request::is('order') ? 'active' : '' }}" href="{{route('order.index')}}">My Orders</a>
                             @endif
                                 <a class="dropdown-item {{Request::is('user*') ? 'active' : '' }}" href="{{route('user.show',Auth::id())}}">My Profile</a>
