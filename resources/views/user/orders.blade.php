@@ -78,8 +78,8 @@
                             </td>
                             <td class="text-right">{{$order->offers()->count()}}</td>
                             <td class="text-right">{{$order->offers->sum('pivot.quantity')}}</td>
-                            <td class="text-right">{{!empty($order->placed_at) ? $order->placed_at->format('d.m.Y') : null}}</td>
-                            <td class="text-right">{{!empty($order->finished_at)  ? $order->finished_at->format('d.m.Y') : null}}</td>
+                            <td class="text-right">{{!empty($order->placed_at) ? $order->placed_at->format('d.m.Y H:m:s') : null}}</td>
+                            <td class="text-right">{{!empty($order->finished_at)  ? $order->finished_at->format('d.m.Y H:m:s') : null}}</td>
                             <td class="text-right">{{$order->offers->sum('pivot.value')}}</td>
                             <td class="text-left">
                                 @if($order->status()->value('id') == 2)

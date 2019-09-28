@@ -87,7 +87,7 @@ class UsersController extends Controller
             'nipnum' => 'nullable|string|max:255',
             'phone' => 'required|string|max:255,phone,' . $id,
             'address' => 'required|string|max:255',
-            'role' => 'required'
+            'role' => 'nullable'
         ]);
 
         $user = User::find($id);
@@ -99,18 +99,18 @@ class UsersController extends Controller
         $user->nipnum = $request->get('nipnum');
         $user->phone = $request->get('phone');
         $user->address = $request->get('address');
-        $user->role_id = Role::where('role',$request->get('role'))->first()->id;
+        if (Auth::user()->role()->value('role') == 'admin')
+            $user->role_id = Role::where('role', $request->get('role'))->first()->id;
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated!');
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  int $id
+         * @return \Illuminate\Http\Response
+         */
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Auth::logout();

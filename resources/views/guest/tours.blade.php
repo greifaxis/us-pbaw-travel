@@ -65,13 +65,7 @@
                 <div class="row">
                     <div class="panel-group col-12">
                         <div class="panel panel-default">
-                            <div class="row my-2">
-                                <div class="col-sm-8 offset-2">
-                                    <a href="{{route('tours.create')}}" class="btn btn-outline-dark btn-block align-content-center p-2"><i class="fas fa-plus-square fa-lg"></i> ADD OFFER</a>
-                                </div>
-                            </div>
                             <div class="panel-heading">
-
                                 <h5 class="panel-title">
                                     {{--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tourlist">Tours list</button>--}}
                                     <a data-toggle="collapse" href="#tour-list" class="btn btn-dark btn-block" id="tour-list-toggle"><i id="tour-list-arrow" class="fas mr-1 fa-chevron-circle-down"></i>Available tours</a>
@@ -227,42 +221,6 @@
             @endforelse
         </div>
 
-{{--        <div class="row">
-            @forelse($offers as $offer)
-                <div class="card mt-4" id="offer-card-{{$offer->id}}">
-                    <img class="card-img-top img-fluid" src="{{$offer->images}}" alt="">
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <span id="hotel-name-{{$offer->id}}">{{$offer->name}}</span>
-                            <span class="text-warning">
-                                @for ($i = 0; $i < $offer->stars; $i++)
-                                    &#9733;
-                                @endfor
-                            </span></h3>
-                        <p class="card-text text-justify text-truncate">{{$offer->body}}</p>
-                        <h4>Location: {{$offer->city}}, {{$offer->country}}</h4>
-                    </div>
---}}{{--                    @can('create', App\Hotel::class)
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <a href="{{route('hotels.edit', $offer->id)}}" class="btn btn-outline-dark btn-block">EDIT</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="javascript:" data-toggle="modal" onclick="deleteData({{$offer->id}})" data-target="#DeleteModal" class="btn btn-outline-danger btn-block">DELETE</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endcan--}}{{--
-                </div>
-            @empty
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h3 class="card-title">No hotels to show...</h3>
-                    </div>
-                </div>
-        @endforelse
-        </div>--}}
         </div>
     </div>
 

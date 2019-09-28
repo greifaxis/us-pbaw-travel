@@ -36,7 +36,7 @@ class OrdersController extends Controller
             return view('admin.showorders', compact('users', 'admins', 'orders', 'pivots', 'statuses'));
         }
         else{
-            $orders = Order::where('user_id',Auth::id())->where('status_id', '>', '1')->with('offers')->get();
+            $orders = Order::where('user_id',Auth::id())->where('status_id', '>', '1')->with('offers')->get()->sortByDesc('created_at');
             $pivots = OfferOrder::whereIn('order_id',$orders->pluck('id')->toArray())->get();
             $statuses = OrderStatus::all()->pluck('status')->toArray();
         return view('user.orders', compact('orders', 'pivots', 'statuses'));
