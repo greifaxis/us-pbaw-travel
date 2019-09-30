@@ -9,7 +9,7 @@
     <div class="card my-4">
         <div class="card-header">
             <div class="row">
-                <div class="col m-0 p-0 pl-4 h5"><i class="fas fa-table"></i>Orders Table</div>
+                <div class="col m-0 p-0 pl-4 h5"><i class="fas fa-table"></i> Orders Table</div>
                 <div class="col m-0 p-0 text-right">
                     <span class="badge badge-secondary mx-2">{{$statuses[1].': '.$orders->where('status_id',2)->count()}}</span>
                     <span class="badge badge-success mx-2">{{$statuses[2].': '.$orders->where('status_id',3)->count()}}</span>
@@ -90,7 +90,9 @@
                 </table>
             </div>
         </div>
-        <div class="card-footer small text-muted "></div>
+        <div class="card-footer small text-muted text-right">
+            <a href="{{route('ordersreport')}}" class="btn btn-primary my-0 py-0 px-1">Create PDF report</a>
+        </div>
     </div>
 
     <!-- Page level plugin JavaScript-->

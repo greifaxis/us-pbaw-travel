@@ -14,13 +14,15 @@
 Auth::routes();
 //GUEST
 Route::get('/', 'HomeController@index');
-Route::get('/database', 'DatabaseController@index');
+//Route::get('/database', 'DatabaseController@index');
 
 
 //AUTH
 Route::get('/basket','BasketsController@index')->name('basket.index')->middleware('auth');
 Route::delete('basket/{id}/delete','BasketsController@destroy')->name('basket.destroy')->middleware('auth');
 Route::post('/checkout','BasketsController@checkout')->name('checkout')->middleware('auth');
+Route::get('order/report','HomeController@createOrdersReport')->name('ordersreport')->middleware('auth');
+
 Route::resource('/hotels', 'HotelsController');
 Route::resource('/contact', 'ContactsController');
 Route::resource('/tours', 'OffersController');
