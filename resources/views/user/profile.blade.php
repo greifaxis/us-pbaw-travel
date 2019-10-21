@@ -139,7 +139,7 @@
             var url = '{{ route("user.destroy", ":id") }}';
             url = url.replace(':id', id);
             var node = document.getElementById("user-name");
-            document.getElementById("hotel-delete-name").innerHTML = node.textContent;
+            document.getElementById("user-name").innerHTML = node.textContent;
             $("#deleteForm").attr('action', url);
         }
 

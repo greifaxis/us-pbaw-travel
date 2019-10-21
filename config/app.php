@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        BeyondCode\ErdGenerator\ErdGeneratorServiceProvider::class,
 
         /*
          * Package Service Providers...

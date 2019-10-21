@@ -14,6 +14,7 @@
             </div>
 
             @can('create', App\Offer::class)
+
                 <div class="row">
                     <div class="col-sm-8 offset-2">
                         <a href="{{route('tours.create')}}" class="btn btn-outline-dark btn-block align-content-center p-2"><i class="fas fa-plus-square fa-lg"></i> ADD OFFER</a>
@@ -87,7 +88,9 @@
         </div>
 
         <div class="col-lg-9 my-4">
+
         @cannot('create',App\Offer::class)
+
         <div class="row mx-1 mb-4 p-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

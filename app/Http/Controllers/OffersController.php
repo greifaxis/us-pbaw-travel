@@ -23,7 +23,7 @@ class OffersController extends Controller
 //        $best_offers_images = Offer::where('places_free','>',0)->orderBy('places_free','asc')->take(3)->pluck('images')->toArray();
         $hotels = Hotel::all();
 
-        return view('guest.tours', compact('offers', 'hotels', 'best_offers','offersFull'));
+        return view('guest.tours', compact('offers', 'hotels', 'best_offers', 'offersFull'));
     }
 
     /**
@@ -50,8 +50,8 @@ class OffersController extends Controller
             'name' => 'required|max:255',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'sale' => '',
-            'date_begin'=>'required|date',
-            'date_end'  => 'required|date',
+            'date_begin' => 'required|date',
+            'date_end' => 'required|date',
             'highlight' => 'required|max:255',
             'body' => 'required|max:1000',
             'places_max' => 'required|max:100',
@@ -81,7 +81,7 @@ class OffersController extends Controller
             $request->input('image3'),
             $request->input('image4'),
             $request->input('image5'),
-        ],JSON_FORCE_OBJECT);
+        ], JSON_FORCE_OBJECT);
         $offer->hotel_id = $request->input('hotel_id');
         $offer->save();
 
@@ -120,13 +120,13 @@ class OffersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!($request->input('isBasket'))){
+        if (!($request->input('isBasket'))) {
             $this->validate($request, [
                 'name' => 'required|max:255',
                 'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
                 'sale' => '',
-                'date_begin'=>'required|date',
-                'date_end'  => 'required|date',
+                'date_begin' => 'required|date',
+                'date_end' => 'required|date',
                 'highlight' => 'required|max:255',
                 'body' => 'required|max:1000',
                 'places_max' => 'required|max:100',
@@ -156,61 +156,49 @@ class OffersController extends Controller
                 $request->input('image3'),
                 $request->input('image4'),
                 $request->input('image5'),
-            ],JSON_FORCE_OBJECT);
+            ], JSON_FORCE_OBJECT);
             //$offer->images = $request->input('images');
             $offer->hotel_id = $request->input('hotel_id');
             $offer->save();
             return redirect()->back()->with('success', 'Offer Updated!');
-        }else{
+        } else {
             $this->validate($request, [
                 'quantity' => 'required|numeric',
             ]);
             $offer = Offer::find($id);
             $user = Auth::user();
-
-            $basket = Basket::where('user_id',$user->id)->get();
-
-            if($basket->isEmpty()){
-//                dd($offer);
+            $basket = Basket::where('user_id', $user->id)->get();
+            if ($basket->isEmpty()) {
                 $basket = new Basket;
                 $basket->user_id = Auth::id();
                 $basket->offer_id = $offer->id;
                 $basket->quantity = $request->input('quantity');
-                $basket->value = !($offer->sale) ? $request->input('quantity')*$offer->price : $request->input('quantity')*$offer->sale;
+                $basket->value = !($offer->sale) ? $request->input('quantity') * $offer->price : $request->input('quantity') * $offer->sale;
                 $basket->save();
-
                 $offer->places_free -= $request->input('quantity');
                 $offer->save();
-
                 return redirect()->back()->with('success', 'Added to basket!');
-
-            }else{
-            $basket = $basket->where('offer_id',$offer->id)->first();
-//            dd($basket);
-            if($basket){
-                $basket->quantity += $request->input('quantity');
-                $basket->value += !($offer->sale) ? $request->input('quantity')*$offer->price : $request->input('quantity')*$offer->sale;
-                $basket->save();
-
-                $offer->places_free -= $request->input('quantity');
-                $offer->save();
-
-                return redirect()->back()->with('success', 'Basked updated!');
-            }else{
-                $basket = new Basket;
-                $basket->user_id = Auth::id();
-                $basket->offer_id = $offer->id;
-                $basket->quantity = $request->input('quantity');
-                $basket->value = !($offer->sale) ? $request->input('quantity')*$offer->price : $request->input('quantity')*$offer->sale;
-                $basket->save();
-
-                $offer->places_free -= $request->input('quantity');
-                $offer->save();
-
-                return redirect()->back()->with('success', 'Added to basket!');
+            } else {
+                $basket = $basket->where('offer_id', $offer->id)->first();
+                if ($basket) {
+                    $basket->quantity += $request->input('quantity');
+                    $basket->value += !($offer->sale) ? $request->input('quantity') * $offer->price : $request->input('quantity') * $offer->sale;
+                    $basket->save();
+                    $offer->places_free -= $request->input('quantity');
+                    $offer->save();
+                    return redirect()->back()->with('success', 'Basked updated!');
+                } else {
+                    $basket = new Basket;
+                    $basket->user_id = Auth::id();
+                    $basket->offer_id = $offer->id;
+                    $basket->quantity = $request->input('quantity');
+                    $basket->value = !($offer->sale) ? $request->input('quantity') * $offer->price : $request->input('quantity') * $offer->sale;
+                    $basket->save();
+                    $offer->places_free -= $request->input('quantity');
+                    $offer->save();
+                    return redirect()->back()->with('success', 'Added to basket!');
+                }
             }
-            }
-
         }
 
 
@@ -223,7 +211,7 @@ class OffersController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-        public function destroy($id)
+    public function destroy($id)
     {
         $offer = Offer::find($id);
         $offer->delete();

@@ -9,8 +9,9 @@
     <div class="card my-4">
         <div class="card-header">
             <div class="row">
-                <div class="col m-0 p-0 pl-4 h5"><i class="fas fa-table"></i> Orders Table</div>
-                <div class="col m-0 p-0 text-right">
+                <div class="col-2 m-0 p-0 pl-4 h5"><i class="fas fa-table"></i> Orders Table</div>
+                <div class="col my-0 p-0 mx-4"><span id="userRandom"></span></div>
+                <div class="col-7 m-0 p-0 text-right">
                     <span class="badge badge-secondary mx-2">{{$statuses[1].': '.$orders->where('status_id',2)->count()}}</span>
                     <span class="badge badge-success mx-2">{{$statuses[2].': '.$orders->where('status_id',3)->count()}}</span>
                     <span class="badge badge-warning mx-2">{{$statuses[3].': '.$orders->where('status_id',4)->count()}}</span>
@@ -62,7 +63,9 @@
                                 <i class="fas fa-comments {{!empty($order->admin_answer)  ? 'text-primary' : 'text-secondary'}}"></i>
                             </td>
                             <td class="text-right">{{$order->offers()->count()}}</td>
+
                             <td class="text-right">{{$order->offers->sum('pivot.quantity')}}</td>
+
                             <td class="text-right">{{$order->offers->sum('pivot.value')}}</td>
                             <td class="text-right">{{!empty($order->placed_at) ? $order->placed_at->format('d.m.Y') : null}}</td>
                             <td class="text-right">{{!empty($order->finished_at)  ? $order->finished_at->format('d.m.Y') : null}}</td>
@@ -91,7 +94,7 @@
             </div>
         </div>
         <div class="card-footer small text-muted text-right">
-            <a href="{{route('ordersreport')}}" class="btn btn-primary my-0 py-0 px-1">Create PDF report</a>
+            <a href="{{route('ordersreport')}}" class="btn btn-primary my-0 py-0 px-1" target="_blank">Create PDF report</a>
         </div>
     </div>
 
@@ -101,4 +104,22 @@
 
     <!-- Demo scripts for this page-->
     <script src="{{asset('js/datatables-demo.js')}}"></script>
+
+    <script>
+        let ajax_call = function () {
+            $.ajax({
+                type: 'GET',
+                url: "{{ route('randomusers') }}",
+                success: function (user) {
+                    $("#userRandom").text(user.firstName + ' ' + user.lastName + ': ' + user.ordersCount);
+                },
+                error: function (user) {
+                    console.log(user);
+                }
+            });
+        };
+        setTimeout(ajax_call, 1);
+        setInterval(ajax_call, 3000);
+    </script>
+
 @endsection

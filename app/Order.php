@@ -21,9 +21,7 @@ class Order extends Model
 
     public function offers()
     {
-//        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
-//        return $this->belongsToMany(User::class)->withTimestamps();
-        return $this->belongsToMany(Offer::class)->withPivot('quantity','value')->withTimestamps();
+        return $this->belongsToMany(Offer::class)->withPivot('quantity', 'value')->withTimestamps();
     }
 
     public function status()

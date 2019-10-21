@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Order;
@@ -40,23 +41,28 @@ class HomeController extends Controller
         return view('pages.tours');
     }
 
-    public function createOrdersReport (){
-
-
-
+    public function createOrdersReport()
+    {
         $data = [
-        'orders' => $orders = Order::where('status_id', '>', '1')->with('offers')->get()->sortByDesc('placed_at'),
-        'pivots' => $pivots = OfferOrder::get(),
-        'statuses' =>$statuses = OrderStatus::all()->pluck('status')->toArray()
-        ];
 
+            'orders' => $orders = Order::where('status_id', '>', '1')->with('offers')->get()->sortByDesc('placed_at'),
+
+            'pivots' => $pivots = OfferOrder::get(),
+            'statuses' => $statuses = OrderStatus::all()->pluck('status')->toArray()
+        ];
         $pdf = PDF::loadView('admin.ordersreport', $data);
         return $pdf->stream('medium.pdf');
     }
 
-
-//    public function admin()
-//    {
-//        return view('admin');
-//    }
+    public function randomusers()
+    {
+        $user = User::whereHas('role', function ($query) {
+            $query->where('role', 'user');
+        })->get()->random();
+        return response()->json([
+            'firstName' => $user->firstName,
+            'lastName' => $user->lastName,
+            'ordersCount' => $user->orders()->count()
+        ]);
+    }
 }

@@ -6,22 +6,6 @@ use App\Offer;
 use Faker\Generator as Faker;
 
 $factory->define(Offer::class, function (Faker $faker) {
-    /*
-                $table->bigIncrements('id');
-                $table->string('name');
-                $table->unsignedDecimal('price');
-                $table->unsignedDecimal('sale')->nullable();
-                $table->date('date_begin');
-                $table->date('date_end');
-                $table->string('highlight')->nullable();
-                $table->text('body')->nullable();
-                $table->unsignedInteger('places_max')->nullable();
-                $table->unsignedInteger('places_free')->nullable();
-                $table->string('airport')->nullable();
-                $table->string('images')->nullable();
-                $table->unsignedBigInteger('hotel_id');
-                $table->timestamps();
-    */
     $price = $faker->randomNumber($nbDigits = 2, $strict = true) * 100 + 99;
     $sale = $faker->boolean($chanceOfGettingTrue = 40) ? $faker->numberBetween($min = $price * 0.5, $max = $price * 0.9) + 0.99 : null;
 

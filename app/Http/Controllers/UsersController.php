@@ -17,11 +17,15 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::whereHas('role', function ($query) {$query->where('role', 'user');})->get();
-        $admins = User::whereHas('role', function ($query) {$query->where('role', 'admin');})->get();
+        $users = User::whereHas('role', function ($query) {
+            $query->where('role', 'user');
+        })->get();
+        $admins = User::whereHas('role', function ($query) {
+            $query->where('role', 'admin');
+        })->get();
         $orders = Order::with('offers')->get();
 
-        return view('admin.showusers',compact('users','admins','orders'));
+        return view('admin.showusers', compact('users', 'admins', 'orders'));
     }
 
     /**
@@ -53,10 +57,10 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $roles = Role::all()->pluck('description','role')->toArray();
+        $roles = Role::all()->pluck('description', 'role')->toArray();
         $user = User::find($id);
         $isOwner = $user->id == Auth::id() ? true : false;
-        return view('user.profile', compact('user','roles','isOwner'));
+        return view('user.profile', compact('user', 'roles', 'isOwner'));
     }
 
     /**
@@ -111,6 +115,7 @@ class UsersController extends Controller
          * @return \Illuminate\Http\Response
          */
     }
+
     public function destroy($id)
     {
         Auth::logout();

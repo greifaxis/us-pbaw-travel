@@ -89,7 +89,7 @@
                     </div>
                     <div class="card-body">
                         <h2 class="card-title">Spontaneous trip with friends</h2>
-                        <p class="card-text mb-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
                             numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
                     </div>
                     <div class="card-footer">

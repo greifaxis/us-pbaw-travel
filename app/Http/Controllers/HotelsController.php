@@ -14,11 +14,7 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        /*        $hotels = Hotel::where('id','>',1)->get();
-                hotelsFirst = Hotel::all()->take(1);
-                $hotelsFirst = Hotel::all()->first();
-                return $hotels;*/
-
+        dd(Auth::user());
         $hotels = Hotel::orderBy('name', 'asc')->get();
         return view('pages.hotels', compact('hotels'));
     }
@@ -124,11 +120,12 @@ class HotelsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $hotel = Hotel::find($id);
         $hotel->delete();
 
-        return redirect('/hotels')->with('success', 'Stock has been deleted Successfully');
+        return redirect('/hotels')->with('success', 'Hotel has been deleted successfully');
     }
 }
